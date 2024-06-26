@@ -303,7 +303,11 @@ h1 {
 }
 
 .timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top: 20px;
+  width: 121px;
 }
 
 button {
@@ -338,7 +342,13 @@ button undefined:focus {
 
 .opacity-off {
   opacity: 0;
-}`, "",{"version":3,"sources":["webpack://./src/components/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;EACA,6BAAA;EACA,qBAAA;AACF;;AAEA;EACE,sCAAA;EACA,sBAAA;EACA,mCAAA;EACA,kCAAA;EACA,kCAAA;EACA,UAAA;EACA,wBAAA;EACA,wCAAA;AACF;;AAEA;;EAEE,gCAAA;EACA,YAAA;EACA,gBAAA;AACF;;AAEA;EACE,gBAAA;EACA,UAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;AACF;;AAEA;EACE,mCAAA;EACA,8BAAA;EACA,kBAAA;EACA,sBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,kBAAA;AACF;AACE;EACE,8BAAA;EACA,kBAAA;EACA,WAAA;EACA,cAAA;EACA,YAAA;EACA,OAAA;EACA,WAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,mCAAA;EACA,WAAA;AACJ;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,8BAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,gBAAA;AAAF;;AAGA;EACE,8BAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kBAAA;EACA,oBAAA;EACA,iBAAA;AAAF;AAEE;;EAEE,aAAA;AAAJ;;AAIA;EACE,UAAA;EACA,+BAAA;AADF;;AAIA;EACE,UAAA;AADF","sourcesContent":[":root {\r\n  --white: #fff;\r\n  --black: #111;\r\n  --html-bg: rgb(244, 244, 244);\r\n  --wrapper-bg: #fee6e3;\r\n}\r\n\r\n* {\r\n  font-family: \"Philosopher\", sans-serif;\r\n  box-sizing: border-box;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-rendering: geometricPrecision;\r\n  outline: 0;\r\n  -moz-outline-style: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\nbody,\r\nhtml {\r\n  background-color: var(--html-bg);\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.section-quote {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--wrapper-bg);\r\n  border: 2px solid var(--black);\r\n  border-radius: 8px;\r\n  box-sizing: border-box;\r\n  color: var(--black);\r\n  max-width: 100%;\r\n  padding: 0 25px;\r\n  position: relative;\r\n\r\n  undefined:after {\r\n    background-color: var(--black);\r\n    border-radius: 8px;\r\n    content: \"\";\r\n    display: block;\r\n    height: 100%;\r\n    left: 0;\r\n    width: 100%;\r\n    position: absolute;\r\n    top: -2px;\r\n    transform: translate(8px, 8px);\r\n    transition: transform 0.2s ease-out;\r\n    z-index: -1;\r\n  }\r\n}\r\n\r\n.keyboard {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.quote-letters-count {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.badge {\r\n  padding: 4px 8px;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  margin-left: 4px;\r\n  color: var(--white);\r\n  background-color: var(--black);\r\n}\r\n\r\n.info-wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.start-btn-wrapper {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.timer {\r\n  margin-top: 20px;\r\n}\r\n\r\nbutton {\r\n  background-color: var(--black);\r\n  border-radius: 4px;\r\n  border-style: none;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  max-width: none;\r\n  min-height: 44px;\r\n  min-width: 10px;\r\n  margin-bottom: 20px;\r\n  outline: none;\r\n  overflow: hidden;\r\n  padding: 9px 20px 8px;\r\n  position: relative;\r\n  text-align: center;\r\n  text-transform: none;\r\n  user-select: none;\r\n\r\n  undefined:hover,\r\n  undefined:focus {\r\n    opacity: 0.75;\r\n  }\r\n}\r\n\r\n.opacity-on {\r\n  opacity: 1;\r\n  transition: opacity 1s ease-out;\r\n}\r\n\r\n.opacity-off {\r\n  opacity: 0;\r\n}"],"sourceRoot":""}]);
+}
+
+.btnRun {
+  min-height: 12px;
+  min-width: 5px;
+  padding: 4px 10px 4px;
+}`, "",{"version":3,"sources":["webpack://./src/components/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;EACA,6BAAA;EACA,qBAAA;AACF;;AAEA;EACE,sCAAA;EACA,sBAAA;EACA,mCAAA;EACA,kCAAA;EACA,kCAAA;EACA,UAAA;EACA,wBAAA;EACA,wCAAA;AACF;;AAEA;;EAEE,gCAAA;EACA,YAAA;EACA,gBAAA;AACF;;AAEA;EACE,gBAAA;EACA,UAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;AACF;;AAEA;EACE,mCAAA;EACA,8BAAA;EACA,kBAAA;EACA,sBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,kBAAA;AACF;AACE;EACE,8BAAA;EACA,kBAAA;EACA,WAAA;EACA,cAAA;EACA,YAAA;EACA,OAAA;EACA,WAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,mCAAA;EACA,WAAA;AACJ;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,8BAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;EACA,YAAA;AAAF;;AAGA;EACE,8BAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kBAAA;EACA,oBAAA;EACA,iBAAA;AAAF;AAEE;;EAEE,aAAA;AAAJ;;AAIA;EACE,UAAA;EACA,+BAAA;AADF;;AAIA;EACE,UAAA;AADF;;AAIA;EACE,gBAAA;EACA,cAAA;EACA,qBAAA;AADF","sourcesContent":[":root {\r\n  --white: #fff;\r\n  --black: #111;\r\n  --html-bg: rgb(244, 244, 244);\r\n  --wrapper-bg: #fee6e3;\r\n}\r\n\r\n* {\r\n  font-family: \"Philosopher\", sans-serif;\r\n  box-sizing: border-box;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-rendering: geometricPrecision;\r\n  outline: 0;\r\n  -moz-outline-style: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\nbody,\r\nhtml {\r\n  background-color: var(--html-bg);\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.section-quote {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--wrapper-bg);\r\n  border: 2px solid var(--black);\r\n  border-radius: 8px;\r\n  box-sizing: border-box;\r\n  color: var(--black);\r\n  max-width: 100%;\r\n  padding: 0 25px;\r\n  position: relative;\r\n\r\n  undefined:after {\r\n    background-color: var(--black);\r\n    border-radius: 8px;\r\n    content: \"\";\r\n    display: block;\r\n    height: 100%;\r\n    left: 0;\r\n    width: 100%;\r\n    position: absolute;\r\n    top: -2px;\r\n    transform: translate(8px, 8px);\r\n    transition: transform 0.2s ease-out;\r\n    z-index: -1;\r\n  }\r\n}\r\n\r\n.keyboard {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.quote-letters-count {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.badge {\r\n  padding: 4px 8px;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  margin-left: 4px;\r\n  color: var(--white);\r\n  background-color: var(--black);\r\n}\r\n\r\n.info-wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.start-btn-wrapper {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.timer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  margin-top: 20px;\r\n  width: 121px;\r\n}\r\n\r\nbutton {\r\n  background-color: var(--black);\r\n  border-radius: 4px;\r\n  border-style: none;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  max-width: none;\r\n  min-height: 44px;\r\n  min-width: 10px;\r\n  margin-bottom: 20px;\r\n  outline: none;\r\n  overflow: hidden;\r\n  padding: 9px 20px 8px;\r\n  position: relative;\r\n  text-align: center;\r\n  text-transform: none;\r\n  user-select: none;\r\n\r\n  undefined:hover,\r\n  undefined:focus {\r\n    opacity: 0.75;\r\n  }\r\n}\r\n\r\n.opacity-on {\r\n  opacity: 1;\r\n  transition: opacity 1s ease-out;\r\n}\r\n\r\n.opacity-off {\r\n  opacity: 0;\r\n}\r\n\r\n.btnRun {\r\n  min-height: 12px;\r\n  min-width: 5px;\r\n  padding: 4px 10px 4px;\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1412,82 +1422,6 @@ module.exports = baseTimes;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseToString.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_baseToString.js ***!
-  \**********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js"),
-    arrayMap = __webpack_require__(/*! ./_arrayMap */ "./node_modules/lodash/_arrayMap.js"),
-    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
-    isSymbol = __webpack_require__(/*! ./isSymbol */ "./node_modules/lodash/isSymbol.js");
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0;
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto = Symbol ? Symbol.prototype : undefined,
-    symbolToString = symbolProto ? symbolProto.toString : undefined;
-
-/**
- * The base implementation of `_.toString` which doesn't convert nullish
- * values to empty strings.
- *
- * @private
- * @param {*} value The value to process.
- * @returns {string} Returns the string.
- */
-function baseToString(value) {
-  // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
-    return value;
-  }
-  if (isArray(value)) {
-    // Recursively convert values (susceptible to call stack limits).
-    return arrayMap(value, baseToString) + '';
-  }
-  if (isSymbol(value)) {
-    return symbolToString ? symbolToString.call(value) : '';
-  }
-  var result = (value + '');
-  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
-}
-
-module.exports = baseToString;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_baseTrim.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_baseTrim.js ***!
-  \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var trimmedEndIndex = __webpack_require__(/*! ./_trimmedEndIndex */ "./node_modules/lodash/_trimmedEndIndex.js");
-
-/** Used to match leading whitespace. */
-var reTrimStart = /^\s+/;
-
-/**
- * The base implementation of `_.trim`.
- *
- * @private
- * @param {string} string The string to trim.
- * @returns {string} Returns the trimmed string.
- */
-function baseTrim(string) {
-  return string
-    ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
-    : string;
-}
-
-module.exports = baseTrim;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/_baseUnary.js":
 /*!*******************************************!*\
   !*** ./node_modules/lodash/_baseUnary.js ***!
@@ -1537,51 +1471,6 @@ function baseValues(object, props) {
 }
 
 module.exports = baseValues;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_createRound.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_createRound.js ***!
-  \*********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js"),
-    toInteger = __webpack_require__(/*! ./toInteger */ "./node_modules/lodash/toInteger.js"),
-    toNumber = __webpack_require__(/*! ./toNumber */ "./node_modules/lodash/toNumber.js"),
-    toString = __webpack_require__(/*! ./toString */ "./node_modules/lodash/toString.js");
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsFinite = root.isFinite,
-    nativeMin = Math.min;
-
-/**
- * Creates a function like `_.round`.
- *
- * @private
- * @param {string} methodName The name of the `Math` method to use when rounding.
- * @returns {Function} Returns the new round function.
- */
-function createRound(methodName) {
-  var func = Math[methodName];
-  return function(number, precision) {
-    number = toNumber(number);
-    precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-    if (precision && nativeIsFinite(number)) {
-      // Shift with exponential notation to avoid floating-point issues.
-      // See [MDN](https://mdn.io/round#Examples) for more details.
-      var pair = (toString(number) + 'e').split('e'),
-          value = func(pair[0] + 'e' + (+pair[1] + precision));
-
-      pair = (toString(value) + 'e').split('e');
-      return +(pair[0] + 'e' + (+pair[1] - precision));
-    }
-    return func(number);
-  };
-}
-
-module.exports = createRound;
 
 
 /***/ }),
@@ -1848,35 +1737,6 @@ var freeSelf = typeof self == 'object' && self && self.Object === Object && self
 var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_trimmedEndIndex.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_trimmedEndIndex.js ***!
-  \*************************************************/
-/***/ ((module) => {
-
-/** Used to match a single whitespace character. */
-var reWhitespace = /\s/;
-
-/**
- * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
- * character of `string`.
- *
- * @private
- * @param {string} string The string to inspect.
- * @returns {number} Returns the index of the last non-whitespace character.
- */
-function trimmedEndIndex(string) {
-  var index = string.length;
-
-  while (index-- && reWhitespace.test(string.charAt(index))) {}
-  return index;
-}
-
-module.exports = trimmedEndIndex;
 
 
 /***/ }),
@@ -2227,45 +2087,6 @@ module.exports = isObjectLike;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isSymbol.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/isSymbol.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && baseGetTag(value) == symbolTag);
-}
-
-module.exports = isSymbol;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/isTypedArray.js":
 /*!*********************************************!*\
   !*** ./node_modules/lodash/isTypedArray.js ***!
@@ -2350,42 +2171,6 @@ module.exports = keys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/round.js":
-/*!**************************************!*\
-  !*** ./node_modules/lodash/round.js ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var createRound = __webpack_require__(/*! ./_createRound */ "./node_modules/lodash/_createRound.js");
-
-/**
- * Computes `number` rounded to `precision`.
- *
- * @static
- * @memberOf _
- * @since 3.10.0
- * @category Math
- * @param {number} number The number to round.
- * @param {number} [precision=0] The precision to round to.
- * @returns {number} Returns the rounded number.
- * @example
- *
- * _.round(4.006);
- * // => 4
- *
- * _.round(4.006, 2);
- * // => 4.01
- *
- * _.round(4060, -2);
- * // => 4100
- */
-var round = createRound('round');
-
-module.exports = round;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/sample.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/sample.js ***!
@@ -2444,216 +2229,6 @@ function stubFalse() {
 }
 
 module.exports = stubFalse;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/toFinite.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/toFinite.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var toNumber = __webpack_require__(/*! ./toNumber */ "./node_modules/lodash/toNumber.js");
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0,
-    MAX_INTEGER = 1.7976931348623157e+308;
-
-/**
- * Converts `value` to a finite number.
- *
- * @static
- * @memberOf _
- * @since 4.12.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted number.
- * @example
- *
- * _.toFinite(3.2);
- * // => 3.2
- *
- * _.toFinite(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toFinite(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toFinite('3.2');
- * // => 3.2
- */
-function toFinite(value) {
-  if (!value) {
-    return value === 0 ? value : 0;
-  }
-  value = toNumber(value);
-  if (value === INFINITY || value === -INFINITY) {
-    var sign = (value < 0 ? -1 : 1);
-    return sign * MAX_INTEGER;
-  }
-  return value === value ? value : 0;
-}
-
-module.exports = toFinite;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/toInteger.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/toInteger.js ***!
-  \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var toFinite = __webpack_require__(/*! ./toFinite */ "./node_modules/lodash/toFinite.js");
-
-/**
- * Converts `value` to an integer.
- *
- * **Note:** This method is loosely based on
- * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
- * @example
- *
- * _.toInteger(3.2);
- * // => 3
- *
- * _.toInteger(Number.MIN_VALUE);
- * // => 0
- *
- * _.toInteger(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toInteger('3.2');
- * // => 3
- */
-function toInteger(value) {
-  var result = toFinite(value),
-      remainder = result % 1;
-
-  return result === result ? (remainder ? result - remainder : result) : 0;
-}
-
-module.exports = toInteger;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/toNumber.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/toNumber.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseTrim = __webpack_require__(/*! ./_baseTrim */ "./node_modules/lodash/_baseTrim.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
-    isSymbol = __webpack_require__(/*! ./isSymbol */ "./node_modules/lodash/isSymbol.js");
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = baseTrim(value);
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-module.exports = toNumber;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/toString.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/toString.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseToString = __webpack_require__(/*! ./_baseToString */ "./node_modules/lodash/_baseToString.js");
-
-/**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- * @example
- *
- * _.toString(null);
- * // => ''
- *
- * _.toString(-0);
- * // => '-0'
- *
- * _.toString([1, 2, 3]);
- * // => '1,2,3'
- */
-function toString(value) {
-  return value == null ? '' : baseToString(value);
-}
-
-module.exports = toString;
 
 
 /***/ }),
@@ -36588,16 +36163,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sample */ "./node_modules/lodash/sample.js");
-/* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sample__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash_round__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/round */ "./node_modules/lodash/round.js");
-/* harmony import */ var lodash_round__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_round__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _ConfettiSplash_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ConfettiSplash/index */ "./src/components/ConfettiSplash/index.tsx");
-/* harmony import */ var _LettersCount_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LettersCount/index */ "./src/components/LettersCount/index.tsx");
-/* harmony import */ var _Status_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Status/index */ "./src/components/Status/index.tsx");
-/* harmony import */ var _Victory_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Victory/index */ "./src/components/Victory/index.tsx");
-/* harmony import */ var _data_quotes_json__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../data/quotes.json */ "./src/data/quotes.json");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index.scss */ "./src/components/index.scss");
+/* harmony import */ var _ConfettiSplash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfettiSplash */ "./src/components/ConfettiSplash/index.tsx");
+/* harmony import */ var _LettersCount__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LettersCount */ "./src/components/LettersCount/index.tsx");
+/* harmony import */ var _Status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Status */ "./src/components/Status/index.tsx");
+/* harmony import */ var _Victory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Victory */ "./src/components/Victory/index.tsx");
+/* harmony import */ var _Timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Timer */ "./src/components/Timer/index.tsx");
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../contexts/GameContext */ "./src/contexts/GameContext.tsx");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index.scss */ "./src/components/index.scss");
 
 
 
@@ -36606,68 +36178,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var returnQuoteLetters = function (quote) {
-    return quote.replace(/\s/g, "").split("_").join("");
-};
-var generateQuote = function () { return lodash_sample__WEBPACK_IMPORTED_MODULE_1___default()(_data_quotes_json__WEBPACK_IMPORTED_MODULE_7__); };
 var Index = function () {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), confetti = _a[0], setConfetti = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(), start = _b[0], setStart = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), victory = _c[0], setVictory = _c[1];
-    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(generateQuote), exception = _d[0], setException = _d[1];
+    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__.useGameContext)(), start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, initialCounter = _a.initialCounter, isPaused = _a.isPaused;
     var quoteLetters = returnQuoteLetters(exception);
-    var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(lodash_round__WEBPACK_IMPORTED_MODULE_2___default()(quoteLetters.length / 2)), counter = _e[0], setCounter = _e[1];
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var keyDownHandler = function (event) {
-            var key = event.key;
-            var underscore = "_";
-            var space = " ";
-            if (key !== underscore && key !== space) {
-                setException(exception.replace(key, underscore));
-            }
-        };
-        window.addEventListener("keydown", keyDownHandler, false);
-        return function () {
-            window.removeEventListener("keydown", keyDownHandler, false);
-        };
-    }, [exception]);
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var timer = counter > 0 && setTimeout(function () { return setCounter(counter - 1); }, 1000);
-        if (counter === 0) {
-            setStart(false);
-        }
-        return function () { return clearInterval(timer); };
-    }, [counter]);
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        if (!quoteLetters) {
-            var newQuote = generateQuote();
-            setVictory(victory + 1);
-            setConfetti(true);
-            setException(newQuote);
-            setCounter(lodash_round__WEBPACK_IMPORTED_MODULE_2___default()(returnQuoteLetters(newQuote).length / 2));
-            setTimeout(function () { return setConfetti(false); }, 4000);
-        }
-    }, [victory, exception]);
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        if (start) {
-            var newQuote = generateQuote();
-            setVictory(0);
-            setException(newQuote);
-            setCounter(lodash_round__WEBPACK_IMPORTED_MODULE_2___default()(returnQuoteLetters(newQuote).length / 2));
-        }
-    }, [start]);
+    function returnQuoteLetters(quote) {
+        return quote.replace(/\s/g, "").split("_").join("");
+    }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ConfettiSplash_index__WEBPACK_IMPORTED_MODULE_3__["default"], { confetti: confetti }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ConfettiSplash__WEBPACK_IMPORTED_MODULE_1__["default"], { confetti: false }),
+        " ",
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "section-quote" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "wrapper" }, start ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "timer" },
-                    "\u0422\u0430\u0439\u043C\u0435\u0440:",
-                    counter),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "wrapper" }, start !== undefined ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Timer__WEBPACK_IMPORTED_MODULE_5__["default"], { initialTime: initialCounter, isPaused: isPaused, onTimeUp: function () { } }),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, exception),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "info-wrapper" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount_index__WEBPACK_IMPORTED_MODULE_4__["default"], { quoteLetters: quoteLetters }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_6__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_5__["default"], { start: start, setStart: setStart }))))));
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount__WEBPACK_IMPORTED_MODULE_2__["default"], { quoteLetters: quoteLetters }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
 
@@ -36727,6 +36253,58 @@ var Status = function (_a) {
 
 /***/ }),
 
+/***/ "./src/components/Timer/index.tsx":
+/*!****************************************!*\
+  !*** ./src/components/Timer/index.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
+// Timer.tsx
+
+
+var Timer = function (_a) {
+    var initialTime = _a.initialTime, onTimeUp = _a.onTimeUp;
+    var _b = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__.useGameContext)(), isPaused = _b.isPaused, togglePause = _b.togglePause;
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialTime), time = _c[0], setTime = _c[1];
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        var timer = null;
+        if (!isPaused && time > 0) {
+            timer = setTimeout(function () { return setTime(time - 1); }, 1000);
+        }
+        if (time === 0) {
+            onTimeUp();
+        }
+        return function () {
+            if (timer)
+                clearTimeout(timer);
+        };
+    }, [time, isPaused, onTimeUp]);
+    // Обновляем внутренний state таймера при изменении initialTime
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        setTime(initialTime);
+    }, [initialTime]);
+    var handleButtonClick = function () {
+        togglePause();
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "timer-display" },
+            "\u0422\u0430\u0439\u043C\u0435\u0440: ",
+            time),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: handleButtonClick }, isPaused ? "Играть" : "Пауза")));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Timer);
+
+
+/***/ }),
+
 /***/ "./src/components/Victory/index.tsx":
 /*!******************************************!*\
   !*** ./src/components/Victory/index.tsx ***!
@@ -36750,6 +36328,75 @@ var Victory = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "badge" }, victory)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Victory);
+
+
+/***/ }),
+
+/***/ "./src/contexts/GameContext.tsx":
+/*!**************************************!*\
+  !*** ./src/contexts/GameContext.tsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GameProvider: () => (/* binding */ GameProvider),
+/* harmony export */   useGameContext: () => (/* binding */ useGameContext)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sample */ "./node_modules/lodash/sample.js");
+/* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sample__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _data_quotes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/quotes.json */ "./src/data/quotes.json");
+
+
+
+// Значения по умолчанию для контекста
+var defaultContextValues = {
+    start: undefined,
+    setStart: function () { },
+    victory: 0,
+    setVictory: function () { },
+    exception: "",
+    setException: function () { },
+    initialCounter: 0,
+    setInitialCounter: function () { },
+    isPaused: false,
+    togglePause: function () { },
+};
+var GameContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(defaultContextValues);
+var useGameContext = function () { return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(GameContext); };
+var GameProvider = function (_a) {
+    var children = _a.children;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined), start = _b[0], setStart = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), victory = _c[0], setVictory = _c[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), exception = _d[0], setException = _d[1];
+    var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), initialCounter = _e[0], setInitialCounter = _e[1];
+    var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isPaused = _f[0], setIsPaused = _f[1];
+    var togglePause = function () {
+        setIsPaused(!isPaused);
+    };
+    var generateQuote = function () {
+        var randomQuote = lodash_sample__WEBPACK_IMPORTED_MODULE_1___default()(_data_quotes_json__WEBPACK_IMPORTED_MODULE_2__);
+        return randomQuote || "";
+    };
+    var returnQuoteLetters = function (quote) {
+        return quote.replace(/\s/g, "").split("_").join("");
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(GameContext.Provider, { value: {
+            start: start,
+            setStart: setStart,
+            victory: victory,
+            setVictory: setVictory,
+            exception: exception,
+            setException: setException,
+            initialCounter: initialCounter,
+            setInitialCounter: setInitialCounter,
+            isPaused: isPaused,
+            togglePause: togglePause,
+        } }, children));
+};
 
 
 /***/ }),
@@ -39356,7 +39003,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f99d55d6446672caa195")
+/******/ 		__webpack_require__.h = () => ("3bfc878b30e7244bca3f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40388,4 +40035,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.e388bce87e155a212ecd.js.map
+//# sourceMappingURL=main.792f9c24875a7978489f.js.map

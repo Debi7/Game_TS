@@ -94,7 +94,11 @@ h1 {
 }
 
 .timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top: 20px;
+  width: 121px;
 }
 
 button {
@@ -130,4 +134,11 @@ button {
 
 .opacity-off {
   opacity: 0;
+}
+
+.btnRun {
+  min-height: 12px;
+  min-width: 5px;
+  padding: 4px 10px 4px;
+
 }
