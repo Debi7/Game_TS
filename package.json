@@ -1,6 +1,7 @@
 {
   "name": "game_ts",
   "homepage": "https://debi7.github.io/Game_TS/",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
