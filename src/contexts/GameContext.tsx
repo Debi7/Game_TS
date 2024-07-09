@@ -58,10 +58,8 @@ export const GameProvider: FC<GameProviderProps> = ({ children }) => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [quote, setQuote] = useState<string>("");
   const [quoteLetters, setQuoteLetters] = useState<string>("");
-
-  const timerStart = quoteLetters.length / 2;
-  const [initialCounter, setInitialCounter] = useState<number>(timerStart);
-
+  const [initialCounter, setInitialCounter] = useState<number>(0);
+  const [confetti, setConfetti] = useState<boolean>(false);
 
   // Функция для переключения паузы
   const togglePause = () => {
@@ -83,26 +81,72 @@ export const GameProvider: FC<GameProviderProps> = ({ children }) => {
   useEffect(() => {
     if (start) {
       const newQuote = generateQuote();
+      const letters = returnQuoteLetters(newQuote);
+
       setQuote(newQuote);
-      setQuoteLetters(returnQuoteLetters(newQuote));
+      setQuoteLetters(letters);
+      setInitialCounter(Math.floor(letters.length / 2));
+      setException("");
+      setVictory(0);
     }
   }, [start]);
+
+  useEffect(() => {
+    if (!quoteLetters) {
+      const newQuote = generateQuote();
+      const letters = returnQuoteLetters(newQuote);
+
+      setQuote(newQuote);
+      setQuoteLetters(letters);
+      setException(newQuote);
+      setVictory(victory + 1);
+      setConfetti(true);
+      setTimeout(() => setConfetti(false), 4000);
+    }
+  }, [victory, confetti]);
+
+
+  useEffect(() => {
+    const isGameWon = quoteLetters.split('').every(letter => exception.includes(letter));
+    if (isGameWon) {
+      setVictory(prevVictory => prevVictory + 1);
+      setConfetti(true);
+      setTimeout(() => setConfetti(false), 4000);
+    }
+  }, [exception, quoteLetters]);
 
 
   // нажатие клавиш
   useEffect(() => {
-    const keyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    const keyDownHandler = (event: KeyboardEvent) => {
       const { key } = event;
       const underscore = "_";
       const space = " ";
-      if (key !== underscore && key !== space) {
-        setException(exception.replace(key, underscore));
+
+      // Игнорируем клавиши "_", пробел и уже удаленные символы
+      if (key === underscore || key === space || exception.includes(key)) {
+        return;
       }
+
+      // Создаем новую строку без текущего символа и обновляем исключение
+      const updatedException = exception + key;
+      setException(updatedException);
+
+      // Проверяем, если все символы удалены, то вызываем победу
+      if (quoteLetters.split('').every(letter => updatedException.includes(letter))) {
+        setVictory(prevVictory => prevVictory + 1);
+        setConfetti(true);
+        setTimeout(() => setConfetti(false), 4000);
+      }
+
+      setInitialCounter(prevCounter => prevCounter - 1);
     };
 
-    window.addEventListener("keydown", keyDownHandler, false);
-    return () => window.removeEventListener("keydown", keyDownHandler, false);
-  }, [exception]);
+    window.addEventListener("keydown", keyDownHandler);
+    return () => {
+      window.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [exception, quoteLetters]);
 
 
   return (
@@ -121,7 +165,7 @@ export const GameProvider: FC<GameProviderProps> = ({ children }) => {
         quote,
         generateQuote,
         quoteLetters,
-        returnQuoteLetters
+        returnQuoteLetters,
       }}
     >
       {children}
