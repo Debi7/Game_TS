@@ -122,12 +122,13 @@ export const GameProvider: FC<GameProviderProps> = ({ children }) => {
       const { key } = event;
       const underscore = "_";
       const space = " ";
+      console.log(`Key pressed: ${key}`);
 
       // Игнорируем клавиши "_", пробел и уже удаленные символы
       if (key === underscore || key === space || exception.includes(key)) {
+        console.log(`Replacing ${key} with ${underscore}`);
         return;
       }
-
       // Создаем новую строку без текущего символа и обновляем исключение
       const updatedException = exception + key;
       setException(updatedException);
@@ -145,6 +146,7 @@ export const GameProvider: FC<GameProviderProps> = ({ children }) => {
     window.addEventListener("keydown", keyDownHandler);
     return () => {
       window.removeEventListener("keydown", keyDownHandler);
+      console.log('Event listener removed');
     };
   }, [exception, quoteLetters]);
 

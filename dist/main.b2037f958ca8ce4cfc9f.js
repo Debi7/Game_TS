@@ -36351,17 +36351,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sample */ "./node_modules/lodash/sample.js");
 /* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sample__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _data_quotes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/quotes.json */ "./src/data/quotes.json");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 
 
 
@@ -36395,10 +36384,8 @@ var GameProvider = function (_a) {
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isPaused = _e[0], setIsPaused = _e[1];
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), quote = _f[0], setQuote = _f[1];
     var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), quoteLetters = _g[0], setQuoteLetters = _g[1];
-    var timerStart = Math.floor(quoteLetters.length / 2);
-    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(timerStart), initialCounter = _h[0], setInitialCounter = _h[1];
-    // Обновляем defaultContextValues с использованием текущего timerStart
-    var updatedDefaultContextValues = __assign(__assign({}, defaultContextValues), { initialCounter: timerStart });
+    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), initialCounter = _h[0], setInitialCounter = _h[1];
+    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), confetti = _j[0], setConfetti = _j[1];
     // Функция для переключения паузы
     var togglePause = function () {
         setIsPaused(!isPaused);
@@ -36416,26 +36403,63 @@ var GameProvider = function (_a) {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         if (start) {
             var newQuote = generateQuote();
+            var letters = returnQuoteLetters(newQuote);
             setQuote(newQuote);
-            setQuoteLetters(returnQuoteLetters(newQuote));
+            setQuoteLetters(letters);
+            setInitialCounter(Math.floor(letters.length / 2));
+            setException("");
+            setVictory(0);
         }
     }, [start]);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        if (!quoteLetters) {
+            var newQuote = generateQuote();
+            var letters = returnQuoteLetters(newQuote);
+            setQuote(newQuote);
+            setQuoteLetters(letters);
+            setException(newQuote);
+            setVictory(victory + 1);
+            setConfetti(true);
+            setTimeout(function () { return setConfetti(false); }, 4000);
+        }
+    }, [victory, confetti]);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        var isGameWon = quoteLetters.split('').every(function (letter) { return exception.includes(letter); });
+        if (isGameWon) {
+            setVictory(function (prevVictory) { return prevVictory + 1; });
+            setConfetti(true);
+            setTimeout(function () { return setConfetti(false); }, 4000);
+        }
+    }, [exception, quoteLetters]);
     // нажатие клавиш
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var keyDownHandler = function (event) {
             var key = event.key;
             var underscore = "_";
             var space = " ";
-            console.log("Key pressed: ".concat(key)); // Логирование нажатия клавиши
-            if (key !== underscore && key !== space) {
-                console.log("Replacing ".concat(key, " with ").concat(underscore)); // Логирование замены символа
-                setException(exception.replace(key, underscore));
-                // setException((prevException) => prevException.replace(key, underscore));
+            console.log("Key pressed: ".concat(key));
+            // Игнорируем клавиши "_", пробел и уже удаленные символы
+            if (key === underscore || key === space || exception.includes(key)) {
+                console.log("Replacing ".concat(key, " with ").concat(underscore));
+                return;
             }
+            // Создаем новую строку без текущего символа и обновляем исключение
+            var updatedException = exception + key;
+            setException(updatedException);
+            // Проверяем, если все символы удалены, то вызываем победу
+            if (quoteLetters.split('').every(function (letter) { return updatedException.includes(letter); })) {
+                setVictory(function (prevVictory) { return prevVictory + 1; });
+                setConfetti(true);
+                setTimeout(function () { return setConfetti(false); }, 4000);
+            }
+            setInitialCounter(function (prevCounter) { return prevCounter - 1; });
         };
-        window.addEventListener("keydown", keyDownHandler, false);
-        return function () { return window.removeEventListener("keydown", keyDownHandler, false); };
-    }, []);
+        window.addEventListener("keydown", keyDownHandler);
+        return function () {
+            window.removeEventListener("keydown", keyDownHandler);
+            console.log('Event listener removed');
+        };
+    }, [exception, quoteLetters]);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(GameContext.Provider, { value: {
             start: start,
             setStart: setStart,
@@ -36451,7 +36475,6 @@ var GameProvider = function (_a) {
             generateQuote: generateQuote,
             quoteLetters: quoteLetters,
             returnQuoteLetters: returnQuoteLetters,
-            updatedDefaultContextValues: updatedDefaultContextValues,
         } }, children));
 };
 
@@ -39060,7 +39083,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("43592b9269d1e9743ad6")
+/******/ 		__webpack_require__.h = () => ("39026aac800420bbba21")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40092,4 +40115,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.de5308a0446149ae801f.js.map
+//# sourceMappingURL=main.b2037f958ca8ce4cfc9f.js.map
