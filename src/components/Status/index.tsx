@@ -1,19 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-const Status: FC<{
-  start: boolean | undefined;
+interface StatusProps {
+  start: boolean;
   setStart: (value: boolean) => void;
-}> = ({ start, setStart }) => (
+}
+
+const Status: FC<StatusProps> = ({ start, setStart }) => (
   <>
     <h1>
-      {typeof start === 'undefined' ? (
-        `⏱ Цель игры - как можно быстрее напечатать буквы и знаки, кроме пробелов, чтобы уложиться в таймер`
-      ) : (
-        <>
-          <img src="../../emoji.png" width="20" height="20" alt="emoji" />
-          Попробуйте еще раз
-        </>
-      )}
+      {typeof start === "undefined"
+        ? `⏱ Цель игры, как можно быстрее напечатать буквы и знаки, кроме пробелов, чтобы уложиться в таймер.`
+        : `Попробуйте еще раз`}
     </h1>
     <div className="start-btn-wrapper">
       <button onClick={() => setStart(true)}>Старт</button>

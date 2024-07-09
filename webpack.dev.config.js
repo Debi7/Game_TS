@@ -14,7 +14,8 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     static: path.resolve(__dirname, './dist'),
-    port: 9000,
+    port: 5500,
+    // port: 9000,
     devMiddleware: {
       index: 'index.html',
       writeToDisk: true,

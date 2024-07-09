@@ -188,10 +188,10 @@ ansiHTML.reset()
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/index.scss":
-/*!****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/index.scss ***!
-  \****************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss ***!
+  \************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -348,7 +348,7 @@ button undefined:focus {
   min-height: 12px;
   min-width: 5px;
   padding: 4px 10px 4px;
-}`, "",{"version":3,"sources":["webpack://./src/components/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;EACA,6BAAA;EACA,qBAAA;AACF;;AAEA;EACE,sCAAA;EACA,sBAAA;EACA,mCAAA;EACA,kCAAA;EACA,kCAAA;EACA,UAAA;EACA,wBAAA;EACA,wCAAA;AACF;;AAEA;;EAEE,gCAAA;EACA,YAAA;EACA,gBAAA;AACF;;AAEA;EACE,gBAAA;EACA,UAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;AACF;;AAEA;EACE,mCAAA;EACA,8BAAA;EACA,kBAAA;EACA,sBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,kBAAA;AACF;AACE;EACE,8BAAA;EACA,kBAAA;EACA,WAAA;EACA,cAAA;EACA,YAAA;EACA,OAAA;EACA,WAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,mCAAA;EACA,WAAA;AACJ;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,8BAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;EACA,YAAA;AAAF;;AAGA;EACE,8BAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kBAAA;EACA,oBAAA;EACA,iBAAA;AAAF;AAEE;;EAEE,aAAA;AAAJ;;AAIA;EACE,UAAA;EACA,+BAAA;AADF;;AAIA;EACE,UAAA;AADF;;AAIA;EACE,gBAAA;EACA,cAAA;EACA,qBAAA;AADF","sourcesContent":[":root {\r\n  --white: #fff;\r\n  --black: #111;\r\n  --html-bg: rgb(244, 244, 244);\r\n  --wrapper-bg: #fee6e3;\r\n}\r\n\r\n* {\r\n  font-family: \"Philosopher\", sans-serif;\r\n  box-sizing: border-box;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-rendering: geometricPrecision;\r\n  outline: 0;\r\n  -moz-outline-style: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\nbody,\r\nhtml {\r\n  background-color: var(--html-bg);\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.section-quote {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--wrapper-bg);\r\n  border: 2px solid var(--black);\r\n  border-radius: 8px;\r\n  box-sizing: border-box;\r\n  color: var(--black);\r\n  max-width: 100%;\r\n  padding: 0 25px;\r\n  position: relative;\r\n\r\n  undefined:after {\r\n    background-color: var(--black);\r\n    border-radius: 8px;\r\n    content: \"\";\r\n    display: block;\r\n    height: 100%;\r\n    left: 0;\r\n    width: 100%;\r\n    position: absolute;\r\n    top: -2px;\r\n    transform: translate(8px, 8px);\r\n    transition: transform 0.2s ease-out;\r\n    z-index: -1;\r\n  }\r\n}\r\n\r\n.keyboard {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.quote-letters-count {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.badge {\r\n  padding: 4px 8px;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  margin-left: 4px;\r\n  color: var(--white);\r\n  background-color: var(--black);\r\n}\r\n\r\n.info-wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.start-btn-wrapper {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.timer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  margin-top: 20px;\r\n  width: 121px;\r\n}\r\n\r\nbutton {\r\n  background-color: var(--black);\r\n  border-radius: 4px;\r\n  border-style: none;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  max-width: none;\r\n  min-height: 44px;\r\n  min-width: 10px;\r\n  margin-bottom: 20px;\r\n  outline: none;\r\n  overflow: hidden;\r\n  padding: 9px 20px 8px;\r\n  position: relative;\r\n  text-align: center;\r\n  text-transform: none;\r\n  user-select: none;\r\n\r\n  undefined:hover,\r\n  undefined:focus {\r\n    opacity: 0.75;\r\n  }\r\n}\r\n\r\n.opacity-on {\r\n  opacity: 1;\r\n  transition: opacity 1s ease-out;\r\n}\r\n\r\n.opacity-off {\r\n  opacity: 0;\r\n}\r\n\r\n.btnRun {\r\n  min-height: 12px;\r\n  min-width: 5px;\r\n  padding: 4px 10px 4px;\r\n\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;EACA,6BAAA;EACA,qBAAA;AACF;;AAEA;EACE,sCAAA;EACA,sBAAA;EACA,mCAAA;EACA,kCAAA;EACA,kCAAA;EACA,UAAA;EACA,wBAAA;EACA,wCAAA;AACF;;AAEA;;EAEE,gCAAA;EACA,YAAA;EACA,gBAAA;AACF;;AAEA;EACE,gBAAA;EACA,UAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;AACF;;AAEA;EACE,mCAAA;EACA,8BAAA;EACA,kBAAA;EACA,sBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,kBAAA;AACF;AACE;EACE,8BAAA;EACA,kBAAA;EACA,WAAA;EACA,cAAA;EACA,YAAA;EACA,OAAA;EACA,WAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,mCAAA;EACA,WAAA;AACJ;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,mBAAA;AAAF;;AAGA;EACE,gBAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,8BAAA;AAAF;;AAGA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AAAF;;AAGA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;EACA,YAAA;AAAF;;AAGA;EACE,8BAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,kBAAA;EACA,oBAAA;EACA,iBAAA;AAAF;AAEE;;EAEE,aAAA;AAAJ;;AAIA;EACE,UAAA;EACA,+BAAA;AADF;;AAIA;EACE,UAAA;AADF;;AAIA;EACE,gBAAA;EACA,cAAA;EACA,qBAAA;AADF","sourcesContent":[":root {\r\n  --white: #fff;\r\n  --black: #111;\r\n  --html-bg: rgb(244, 244, 244);\r\n  --wrapper-bg: #fee6e3;\r\n}\r\n\r\n* {\r\n  font-family: \"Philosopher\", sans-serif;\r\n  box-sizing: border-box;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-rendering: geometricPrecision;\r\n  outline: 0;\r\n  -moz-outline-style: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\nbody,\r\nhtml {\r\n  background-color: var(--html-bg);\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.section-quote {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--wrapper-bg);\r\n  border: 2px solid var(--black);\r\n  border-radius: 8px;\r\n  box-sizing: border-box;\r\n  color: var(--black);\r\n  max-width: 100%;\r\n  padding: 0 25px;\r\n  position: relative;\r\n\r\n  undefined:after {\r\n    background-color: var(--black);\r\n    border-radius: 8px;\r\n    content: \"\";\r\n    display: block;\r\n    height: 100%;\r\n    left: 0;\r\n    width: 100%;\r\n    position: absolute;\r\n    top: -2px;\r\n    transform: translate(8px, 8px);\r\n    transition: transform 0.2s ease-out;\r\n    z-index: -1;\r\n  }\r\n}\r\n\r\n.keyboard {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.quote-letters-count {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.badge {\r\n  padding: 4px 8px;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  margin-left: 4px;\r\n  color: var(--white);\r\n  background-color: var(--black);\r\n}\r\n\r\n.info-wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n.start-btn-wrapper {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.timer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  margin-top: 20px;\r\n  width: 121px;\r\n}\r\n\r\nbutton {\r\n  background-color: var(--black);\r\n  border-radius: 4px;\r\n  border-style: none;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  max-width: none;\r\n  min-height: 44px;\r\n  min-width: 10px;\r\n  margin-bottom: 20px;\r\n  outline: none;\r\n  overflow: hidden;\r\n  padding: 9px 20px 8px;\r\n  position: relative;\r\n  text-align: center;\r\n  text-transform: none;\r\n  user-select: none;\r\n\r\n  undefined:hover,\r\n  undefined:focus {\r\n    opacity: 0.75;\r\n  }\r\n}\r\n\r\n.opacity-on {\r\n  opacity: 1;\r\n  transition: opacity 1s ease-out;\r\n}\r\n\r\n.opacity-off {\r\n  opacity: 0;\r\n}\r\n\r\n.btnRun {\r\n  min-height: 12px;\r\n  min-width: 5px;\r\n  padding: 4px 10px 4px;\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -35723,10 +35723,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./src/components/index.scss":
-/*!***********************************!*\
-  !*** ./src/components/index.scss ***!
-  \***********************************/
+/***/ "./src/styles/index.scss":
+/*!*******************************!*\
+  !*** ./src/styles/index.scss ***!
+  \*******************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -35746,7 +35746,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/index.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss");
 
       
       
@@ -35800,8 +35800,8 @@ if (true) {
     var oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
 
     module.hot.accept(
-      /*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/index.scss",
-      __WEBPACK_OUTDATED_DEPENDENCIES__ => { /* harmony import */ _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/index.scss");
+      /*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss",
+      __WEBPACK_OUTDATED_DEPENDENCIES__ => { /* harmony import */ _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss");
 (function () {
         if (!isEqualLocals(oldLocals, isNamedExport ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals, isNamedExport)) {
                 module.hot.invalidate();
@@ -36112,13 +36112,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Index */ "./src/components/Index.tsx");
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./contexts/GameContext */ "./src/contexts/GameContext.tsx");
+/* harmony import */ var _components_Index_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Index/index */ "./src/components/Index/index.tsx");
+
 
 
 
 var container = document.getElementById("root");
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-root.render(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Index__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+root.render(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_contexts_GameContext__WEBPACK_IMPORTED_MODULE_2__.GameProvider, null,
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Index_index__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 
 
 /***/ }),
@@ -36150,10 +36153,10 @@ var ConfettiSplash = function (_a) {
 
 /***/ }),
 
-/***/ "./src/components/Index.tsx":
-/*!**********************************!*\
-  !*** ./src/components/Index.tsx ***!
-  \**********************************/
+/***/ "./src/components/Index/index.tsx":
+/*!****************************************!*\
+  !*** ./src/components/Index/index.tsx ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -36163,13 +36166,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ConfettiSplash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfettiSplash */ "./src/components/ConfettiSplash/index.tsx");
-/* harmony import */ var _LettersCount__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LettersCount */ "./src/components/LettersCount/index.tsx");
-/* harmony import */ var _Status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Status */ "./src/components/Status/index.tsx");
-/* harmony import */ var _Victory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Victory */ "./src/components/Victory/index.tsx");
-/* harmony import */ var _Timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Timer */ "./src/components/Timer/index.tsx");
-/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../contexts/GameContext */ "./src/contexts/GameContext.tsx");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index.scss */ "./src/components/index.scss");
+/* harmony import */ var _ConfettiSplash_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ConfettiSplash/index */ "./src/components/ConfettiSplash/index.tsx");
+/* harmony import */ var _LettersCount_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../LettersCount/index */ "./src/components/LettersCount/index.tsx");
+/* harmony import */ var _Status_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Status/index */ "./src/components/Status/index.tsx");
+/* harmony import */ var _Victory_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Victory/index */ "./src/components/Victory/index.tsx");
+/* harmony import */ var _Timer_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Timer/index */ "./src/components/Timer/index.tsx");
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
+/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/index.scss */ "./src/styles/index.scss");
 
 
 
@@ -36179,21 +36182,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Index = function () {
-    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__.useGameContext)(), start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, initialCounter = _a.initialCounter, isPaused = _a.isPaused;
-    var quoteLetters = returnQuoteLetters(exception);
-    function returnQuoteLetters(quote) {
-        return quote.replace(/\s/g, "").split("_").join("");
-    }
+    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__.useGameContext)(), start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, initialCounter = _a.initialCounter, isPaused = _a.isPaused, quote = _a.quote, quoteLetters = _a.quoteLetters;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ConfettiSplash__WEBPACK_IMPORTED_MODULE_1__["default"], { confetti: false }),
-        " ",
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ConfettiSplash_index__WEBPACK_IMPORTED_MODULE_1__["default"], { confetti: false }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "section-quote" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "wrapper" }, start !== undefined ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Timer__WEBPACK_IMPORTED_MODULE_5__["default"], { initialTime: initialCounter, isPaused: isPaused, onTimeUp: function () { } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, exception),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Timer_index__WEBPACK_IMPORTED_MODULE_5__["default"], { initialTime: initialCounter, isPaused: isPaused, onTimeUp: function () { } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, quote || exception),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "info-wrapper" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount__WEBPACK_IMPORTED_MODULE_2__["default"], { quoteLetters: quoteLetters }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))))));
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount_index__WEBPACK_IMPORTED_MODULE_2__["default"], { quoteLetters: quoteLetters }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
 
@@ -36242,9 +36240,9 @@ __webpack_require__.r(__webpack_exports__);
 var Status = function (_a) {
     var start = _a.start, setStart = _a.setStart;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, typeof start === 'undefined' ? ("\u23F1 \u0426\u0435\u043B\u044C \u0438\u0433\u0440\u044B - \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u0441\u0442\u0440\u0435\u0435 \u043D\u0430\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043A\u0432\u044B \u0438 \u0437\u043D\u0430\u043A\u0438, \u043A\u0440\u043E\u043C\u0435 \u043F\u0440\u043E\u0431\u0435\u043B\u043E\u0432, \u0447\u0442\u043E\u0431\u044B \u0443\u043B\u043E\u0436\u0438\u0442\u044C\u0441\u044F \u0432 \u0442\u0430\u0439\u043C\u0435\u0440") : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "../../emoji.png", width: "20", height: "20", alt: "emoji" }),
-            "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437"))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, typeof start === "undefined"
+            ? "\u23F1 \u0426\u0435\u043B\u044C \u0438\u0433\u0440\u044B, \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u0441\u0442\u0440\u0435\u0435 \u043D\u0430\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043A\u0432\u044B \u0438 \u0437\u043D\u0430\u043A\u0438, \u043A\u0440\u043E\u043C\u0435 \u043F\u0440\u043E\u0431\u0435\u043B\u043E\u0432, \u0447\u0442\u043E\u0431\u044B \u0443\u043B\u043E\u0436\u0438\u0442\u044C\u0441\u044F \u0432 \u0442\u0430\u0439\u043C\u0435\u0440."
+            : "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437"),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "start-btn-wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: function () { return setStart(true); } }, "\u0421\u0442\u0430\u0440\u0442"))));
 };
@@ -36271,27 +36269,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Timer = function (_a) {
-    var initialTime = _a.initialTime, onTimeUp = _a.onTimeUp;
-    var _b = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__.useGameContext)(), isPaused = _b.isPaused, togglePause = _b.togglePause;
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialTime), time = _c[0], setTime = _c[1];
+    var initialTime = _a.initialTime, onTimeUp = _a.onTimeUp, isPaused = _a.isPaused;
+    var togglePause = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__.useGameContext)().togglePause;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialTime), time = _b[0], setTime = _b[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var timer = null;
+        // Запуск таймера, если игра не на паузе и время еще не вышло
         if (!isPaused && time > 0) {
             timer = setTimeout(function () { return setTime(time - 1); }, 1000);
         }
+        // Выполнение действия при окончании времени
         if (time === 0) {
             onTimeUp();
         }
         return function () {
+            // Очистка таймера при размонтировании компонента или изменении зависимостей
             if (timer)
                 clearTimeout(timer);
         };
     }, [time, isPaused, onTimeUp]);
-    // Обновляем внутренний state таймера при изменении initialTime
+    // Обновление внутреннего состояния таймера при изменении initialTime
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         setTime(initialTime);
     }, [initialTime]);
     var handleButtonClick = function () {
+        // Обработчик для кнопки "Пауза"/"Играть"
         togglePause();
     };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
@@ -36364,26 +36366,60 @@ var defaultContextValues = {
     setInitialCounter: function () { },
     isPaused: false,
     togglePause: function () { },
+    quote: "",
+    generateQuote: function () { return ""; },
+    quoteLetters: "",
+    returnQuoteLetters: function () { return ""; },
 };
+// Создание контекста
 var GameContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(defaultContextValues);
+// Хук для использования контекста
 var useGameContext = function () { return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(GameContext); };
+// Провайдер контекста
 var GameProvider = function (_a) {
     var children = _a.children;
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined), start = _b[0], setStart = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), victory = _c[0], setVictory = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), exception = _d[0], setException = _d[1];
-    var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), initialCounter = _e[0], setInitialCounter = _e[1];
-    var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isPaused = _f[0], setIsPaused = _f[1];
+    var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isPaused = _e[0], setIsPaused = _e[1];
+    var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), quote = _f[0], setQuote = _f[1];
+    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), quoteLetters = _g[0], setQuoteLetters = _g[1];
+    var timerStart = quoteLetters.length / 2;
+    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(timerStart), initialCounter = _h[0], setInitialCounter = _h[1];
+    // Функция для переключения паузы
     var togglePause = function () {
         setIsPaused(!isPaused);
     };
+    // Функция для генерации случайной цитаты
     var generateQuote = function () {
         var randomQuote = lodash_sample__WEBPACK_IMPORTED_MODULE_1___default()(_data_quotes_json__WEBPACK_IMPORTED_MODULE_2__);
         return randomQuote || "";
     };
+    // Функция для возвращения букв цитаты без пробелов и подчеркиваний
     var returnQuoteLetters = function (quote) {
         return quote.replace(/\s/g, "").split("_").join("");
     };
+    // Эффект для генерации цитаты при старте игры
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        if (start) {
+            var newQuote = generateQuote();
+            setQuote(newQuote);
+            setQuoteLetters(returnQuoteLetters(newQuote));
+        }
+    }, [start]);
+    // нажатие клавиш
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        var keyDownHandler = function (event) {
+            var key = event.key;
+            var underscore = "_";
+            var space = " ";
+            if (key !== underscore && key !== space) {
+                setException(exception.replace(key, underscore));
+            }
+        };
+        window.addEventListener("keydown", keyDownHandler, false);
+        return function () { return window.removeEventListener("keydown", keyDownHandler, false); };
+    }, [exception]);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(GameContext.Provider, { value: {
             start: start,
             setStart: setStart,
@@ -36395,6 +36431,10 @@ var GameProvider = function (_a) {
             setInitialCounter: setInitialCounter,
             isPaused: isPaused,
             togglePause: togglePause,
+            quote: quote,
+            generateQuote: generateQuote,
+            quoteLetters: quoteLetters,
+            returnQuoteLetters: returnQuoteLetters
         } }, children));
 };
 
@@ -36466,14 +36506,14 @@ var WebSocketClient = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=9000&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
+/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=5500&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
 /*!***********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=9000&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
+  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=5500&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
   \***********************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-var __resourceQuery = "?protocol=ws%3A&hostname=0.0.0.0&port=9000&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
+var __resourceQuery = "?protocol=ws%3A&hostname=0.0.0.0&port=5500&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webpack/hot/log.js */ "./node_modules/webpack/hot/log.js");
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -39003,7 +39043,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("3bfc878b30e7244bca3f")
+/******/ 		__webpack_require__.h = () => ("64f504a60606a3fec14e")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40029,10 +40069,10 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	// module cache are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	__webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=9000&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true");
+/******/ 	__webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=5500&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true");
 /******/ 	__webpack_require__("./node_modules/webpack/hot/dev-server.js");
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/App.tsx");
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.792f9c24875a7978489f.js.map
+//# sourceMappingURL=main.5dd802d1871b1c6b6276.js.map
