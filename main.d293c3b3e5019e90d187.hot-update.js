@@ -72,9 +72,9 @@ var GameProvider = function (_a) {
             var letters = returnQuoteLetters(newQuote);
             setQuote(newQuote);
             setQuoteLetters(letters);
-            setInitialCounter(Math.floor(letters.length / 2)); // Установка начального значения таймера
-            setException(""); // Сбрасываем исключения
-            setVictory(0); // Сбрасываем победу
+            setInitialCounter(Math.floor(letters.length / 2));
+            setException("");
+            setVictory(0);
         }
     }, [start]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -83,8 +83,7 @@ var GameProvider = function (_a) {
             var letters = returnQuoteLetters(newQuote);
             setQuote(newQuote);
             setQuoteLetters(letters);
-            setInitialCounter(Math.floor(letters.length / 2)); // Установка начального значения таймера
-            setException(newQuote); // Устанавливаем исключения равными новой цитате
+            setException(newQuote);
             setVictory(victory + 1);
             setConfetti(true);
             setTimeout(function () { return setConfetti(false); }, 4000);
@@ -104,8 +103,10 @@ var GameProvider = function (_a) {
             var key = event.key;
             var underscore = "_";
             var space = " ";
+            console.log("Key pressed: ".concat(key));
             // Игнорируем клавиши "_", пробел и уже удаленные символы
             if (key === underscore || key === space || exception.includes(key)) {
+                console.log("Replacing ".concat(key, " with ").concat(underscore));
                 return;
             }
             // Создаем новую строку без текущего символа и обновляем исключение
@@ -117,12 +118,12 @@ var GameProvider = function (_a) {
                 setConfetti(true);
                 setTimeout(function () { return setConfetti(false); }, 4000);
             }
-            // Уменьшаем счетчик таймера на единицу
             setInitialCounter(function (prevCounter) { return prevCounter - 1; });
         };
         window.addEventListener("keydown", keyDownHandler);
         return function () {
             window.removeEventListener("keydown", keyDownHandler);
+            console.log('Event listener removed');
         };
     }, [exception, quoteLetters]);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(GameContext.Provider, { value: {
@@ -150,9 +151,9 @@ var GameProvider = function (_a) {
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ /* webpack/runtime/getFullHash */
 /******/ (() => {
-/******/ 	__webpack_require__.h = () => ("12b70ba61b53b6998ad0")
+/******/ 	__webpack_require__.h = () => ("39026aac800420bbba21")
 /******/ })();
 /******/ 
 /******/ }
 );
-//# sourceMappingURL=main.d2fee4da322a511accc2.hot-update.js.map
+//# sourceMappingURL=main.d293c3b3e5019e90d187.hot-update.js.map
