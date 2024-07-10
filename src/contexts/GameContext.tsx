@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useState, FC, ReactNode, useEffect, KeyboardEvent } from "react";
 import _sample from "lodash/sample";
-
 import quotes from "../data/quotes.json";
-
+import Status from "../components/Status/index";
 // Интерфейс для свойств контекста
 interface GameContextProps {
   start?: boolean;
@@ -105,51 +104,64 @@ export const GameProvider: FC<GameProviderProps> = ({ children }) => {
     }
   }, [victory, confetti]);
 
-
   useEffect(() => {
-    const isGameWon = quoteLetters.split('').every(letter => exception.includes(letter));
+    const isGameWon = quoteLetters.split("").every((letter) => exception.includes(letter));
     if (isGameWon) {
-      setVictory(prevVictory => prevVictory + 1);
+      setVictory((prevVictory) => prevVictory + 1);
       setConfetti(true);
       setTimeout(() => setConfetti(false), 4000);
     }
   }, [exception, quoteLetters]);
 
-
-  // нажатие клавиш
+  // Обработчик нажатия клавиши
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       const { key } = event;
       const underscore = "_";
       const space = " ";
-      console.log(`Key pressed: ${key}`);
 
-      // Игнорируем клавиши "_", пробел и уже удаленные символы
-      if (key === underscore || key === space || exception.includes(key)) {
-        console.log(`Replacing ${key} with ${underscore}`);
+      // Игнорируем клавиши "_", пробел
+      if (key === underscore || key === space) {
         return;
       }
-      // Создаем новую строку без текущего символа и обновляем исключение
-      const updatedException = exception + key;
-      setException(updatedException);
+
+      // Обновляем цитату, заменяя только первую встречающуюся букву на подчеркивание
+      const updatedQuote = quote.split("");
+      const index = updatedQuote.findIndex((char) => char.toLowerCase() === key.toLowerCase() && char !== underscore);
+
+      if (index !== -1) {
+        updatedQuote[index] = underscore;
+        setQuote(updatedQuote.join(""));
+
+        // Создаем новую строку исключений
+        setException((prevException) => prevException + key);
+      }
 
       // Проверяем, если все символы удалены, то вызываем победу
-      if (quoteLetters.split('').every(letter => updatedException.includes(letter))) {
-        setVictory(prevVictory => prevVictory + 1);
+      if (updatedQuote.every((char) => char === underscore || char === space)) {
+        setVictory((prevVictory) => prevVictory + 1);
         setConfetti(true);
         setTimeout(() => setConfetti(false), 4000);
       }
-
-      setInitialCounter(prevCounter => prevCounter - 1);
     };
+
+    setInitialCounter((prevCounter) => {
+      if (prevCounter > 0) {
+        return prevCounter - 1;
+      } else {
+        // setStart(true);
+        return prevCounter;
+      }
+    });
+
+
+
 
     window.addEventListener("keydown", keyDownHandler);
     return () => {
       window.removeEventListener("keydown", keyDownHandler);
-      console.log('Event listener removed');
     };
-  }, [exception, quoteLetters]);
-
+  }, [quote, exception, victory, confetti]);
 
   return (
     <GameContext.Provider
