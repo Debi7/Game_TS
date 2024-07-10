@@ -90,42 +90,53 @@ var GameProvider = function (_a) {
         }
     }, [victory, confetti]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var isGameWon = quoteLetters.split('').every(function (letter) { return exception.includes(letter); });
+        var isGameWon = quoteLetters.split("").every(function (letter) { return exception.includes(letter); });
         if (isGameWon) {
             setVictory(function (prevVictory) { return prevVictory + 1; });
             setConfetti(true);
             setTimeout(function () { return setConfetti(false); }, 4000);
         }
     }, [exception, quoteLetters]);
-    // нажатие клавиш
+    // Обработчик нажатия клавиши
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var keyDownHandler = function (event) {
             var key = event.key;
             var underscore = "_";
             var space = " ";
-            console.log("Key pressed: ".concat(key));
-            // Игнорируем клавиши "_", пробел и уже удаленные символы
-            if (key === underscore || key === space || exception.includes(key)) {
-                console.log("Replacing ".concat(key, " with ").concat(underscore));
+            // Игнорируем клавиши "_", пробел
+            if (key === underscore || key === space) {
                 return;
             }
-            // Создаем новую строку без текущего символа и обновляем исключение
-            var updatedException = exception + key;
-            setException(updatedException);
+            // Обновляем цитату, заменяя только первую встречающуюся букву на подчеркивание
+            var updatedQuote = quote.split("");
+            var index = updatedQuote.findIndex(function (char) { return char.toLowerCase() === key.toLowerCase() && char !== underscore; });
+            if (index !== -1) {
+                updatedQuote[index] = underscore;
+                setQuote(updatedQuote.join(""));
+                // Создаем новую строку исключений
+                setException(function (prevException) { return prevException + key; });
+            }
             // Проверяем, если все символы удалены, то вызываем победу
-            if (quoteLetters.split('').every(function (letter) { return updatedException.includes(letter); })) {
+            if (updatedQuote.every(function (char) { return char === underscore || char === space; })) {
                 setVictory(function (prevVictory) { return prevVictory + 1; });
                 setConfetti(true);
                 setTimeout(function () { return setConfetti(false); }, 4000);
             }
-            setInitialCounter(function (prevCounter) { return prevCounter - 1; });
+            else {
+                setStart(false);
+            }
         };
+        setInitialCounter(function (prevCounter) {
+            if (prevCounter > 0) {
+                return prevCounter - 1;
+            }
+            return prevCounter && { start: start };
+        });
         window.addEventListener("keydown", keyDownHandler);
         return function () {
             window.removeEventListener("keydown", keyDownHandler);
-            console.log('Event listener removed');
         };
-    }, [exception, quoteLetters]);
+    }, [quote, exception, victory, confetti]);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(GameContext.Provider, { value: {
             start: start,
             setStart: setStart,
@@ -151,9 +162,9 @@ var GameProvider = function (_a) {
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ /* webpack/runtime/getFullHash */
 /******/ (() => {
-/******/ 	__webpack_require__.h = () => ("39026aac800420bbba21")
+/******/ 	__webpack_require__.h = () => ("335d31078ac71c364845")
 /******/ })();
 /******/ 
 /******/ }
 );
-//# sourceMappingURL=main.d293c3b3e5019e90d187.hot-update.js.map
+//# sourceMappingURL=main.7752e7234b1dde3d6747.hot-update.js.map
