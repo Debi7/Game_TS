@@ -1,40 +1,24 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
+import ConfettiSplash from '../ConfettiSplash/index';
+import LettersCount from '../LettersCount/index';
+import Status from '../Status/index';
+import Victory from '../Victory/index';
 
-import ConfettiSplash from "../ConfettiSplash/index";
-import LettersCount from "../LettersCount/index";
-import Status from "../Status/index";
-import Victory from "../Victory/index";
-import Timer from "../Timer/index";
-
-import { useGameContext } from "../../contexts/GameContext";
-
-import "../../styles/index.scss";
+import { useGame } from '../../contexts/GameContext';
+import '../../styles/index.scss';
 
 const Index: FC = () => {
-  const {
-    start,
-    setStart,
-    victory,
-    exception,
-    initialCounter,
-    isPaused,
-    quote,
-    quoteLetters,
-  } = useGameContext();
+  const { confetti, start, setStart, victory, exception, counter, quoteLetters } = useGame();
 
   return (
     <>
-      <ConfettiSplash confetti={false} />
+      <ConfettiSplash confetti={confetti} />
       <div className="section-quote">
         <div className="wrapper">
-          {start !== undefined ? (
+          {start ? (
             <>
-              <Timer
-                initialTime={initialCounter}
-                isPaused={isPaused}
-                onTimeUp={() => { }}
-              />
-              <h1>{quote || exception}</h1>
+              <div className="timer">Таймер: {counter}</div>
+              <h1>{exception}</h1>
               <div className="info-wrapper">
                 <LettersCount quoteLetters={quoteLetters} />
                 <Victory victory={victory} />

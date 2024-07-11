@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 
-
 const Victory: FC<{ victory: number }> = ({ victory }) => {
   return (
     <>

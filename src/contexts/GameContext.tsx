@@ -1,188 +1,102 @@
-import React, { createContext, useContext, useState, FC, ReactNode, useEffect, KeyboardEvent } from "react";
-import _sample from "lodash/sample";
-import quotes from "../data/quotes.json";
-import Status from "../components/Status/index";
-// Интерфейс для свойств контекста
+import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+import _sample from 'lodash/sample';
+import quotes from '../data/quotes.json';
+
 interface GameContextProps {
-  start?: boolean;
-  setStart: (value: boolean | undefined) => void;
+  confetti: boolean;
+  start: boolean | undefined;
+  setStart: (start: boolean | undefined) => void;
   victory: number;
-  setVictory: (value: number) => void;
+  setVictory: (victory: number) => void;
   exception: string;
-  setException: (value: string) => void;
-  initialCounter: number;
-  setInitialCounter: (value: number) => void;
-  isPaused: boolean;
-  togglePause: () => void;
-  quote: string;
-  generateQuote: () => string;
+  counter: number;
   quoteLetters: string;
-  returnQuoteLetters: (quote: string) => string;
 }
 
-// Значения по умолчанию для контекста
-const defaultContextValues: GameContextProps = {
+const defaultGameContext: GameContextProps = {
+  confetti: false,
   start: undefined,
   setStart: () => { },
   victory: 0,
   setVictory: () => { },
   exception: "",
-  setException: () => { },
-  initialCounter: 0,
-  setInitialCounter: () => { },
-  isPaused: false,
-  togglePause: () => { },
-  quote: "",
-  generateQuote: () => "",
+  counter: 0,
   quoteLetters: "",
-  returnQuoteLetters: () => "",
 };
 
-// Создание контекста
-const GameContext = createContext<GameContextProps>(defaultContextValues);
+const GameContext = createContext<GameContextProps>(defaultGameContext);
 
-// Хук для использования контекста
-export const useGameContext = () => useContext(GameContext);
+export const GameProvider = ({ children }: { children: ReactNode }) => {
+  const generateQuote = () => _sample(quotes) as string;
+  const returnQuoteLetters = (quote: string) => quote.replace(/\s/g, '').split('_').join('');
 
-// Типизация провайдера с учетом children
-interface GameProviderProps {
-  children: ReactNode;
-}
+  const [confetti, setConfetti] = useState(false);
+  const [start, setStart] = useState<undefined | boolean>();
+  const [victory, setVictory] = useState(0);
+  const [exception, setException] = useState(generateQuote);
+  const quoteLetters = returnQuoteLetters(exception);
+  const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
 
-// Провайдер контекста
-export const GameProvider: FC<GameProviderProps> = ({ children }) => {
-  const [start, setStart] = useState<boolean | undefined>(undefined);
-  const [victory, setVictory] = useState<number>(0);
-  const [exception, setException] = useState<string>("");
-  const [isPaused, setIsPaused] = useState<boolean>(false);
-  const [quote, setQuote] = useState<string>("");
-  const [quoteLetters, setQuoteLetters] = useState<string>("");
-  const [initialCounter, setInitialCounter] = useState<number>(0);
-  const [confetti, setConfetti] = useState<boolean>(false);
-
-  // Функция для переключения паузы
-  const togglePause = () => {
-    setIsPaused(!isPaused);
-  };
-
-  // Функция для генерации случайной цитаты
-  const generateQuote = () => {
-    const randomQuote = _sample(quotes);
-    return randomQuote || "";
-  };
-
-  // Функция для возвращения букв цитаты без пробелов и подчеркиваний
-  const returnQuoteLetters = (quote: string) => {
-    return quote.replace(/\s/g, "").split("_").join("");
-  };
-
-  // Эффект для генерации цитаты при старте игры
   useEffect(() => {
-    if (start) {
-      const newQuote = generateQuote();
-      const letters = returnQuoteLetters(newQuote);
+    const keyDownHandler = (event: KeyboardEvent) => {
+      const { key } = event;
+      const underscore = '_';
+      const space = ' ';
 
-      setQuote(newQuote);
-      setQuoteLetters(letters);
-      setInitialCounter(Math.floor(letters.length / 2));
-      setException("");
-      setVictory(0);
+      if (key !== underscore && key !== space) {
+        setException((prevException) => prevException.replace(key, underscore));
+      }
+    };
+
+    window.addEventListener('keydown', keyDownHandler, false);
+    return () => window.removeEventListener('keydown', keyDownHandler, false);
+  }, []);
+
+  useEffect(() => {
+    const timer = counter > 0 ? setTimeout(() => setCounter(counter - 1), 1000) : null;
+
+    if (counter === 0) {
+      setStart(false);
     }
-  }, [start]);
+
+    return () => clearInterval(timer);
+  }, [counter]);
 
   useEffect(() => {
     if (!quoteLetters) {
       const newQuote = generateQuote();
-      const letters = returnQuoteLetters(newQuote);
-
-      setQuote(newQuote);
-      setQuoteLetters(letters);
-      setException(newQuote);
-      setVictory(victory + 1);
-      setConfetti(true);
-      setTimeout(() => setConfetti(false), 4000);
-    }
-  }, [victory, confetti]);
-
-  useEffect(() => {
-    const isGameWon = quoteLetters.split("").every((letter) => exception.includes(letter));
-    if (isGameWon) {
       setVictory((prevVictory) => prevVictory + 1);
       setConfetti(true);
+      setException(newQuote);
+      setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
       setTimeout(() => setConfetti(false), 4000);
     }
   }, [exception, quoteLetters]);
 
-  // Обработчик нажатия клавиши
   useEffect(() => {
-    const keyDownHandler = (event: KeyboardEvent) => {
-      const { key } = event;
-      const underscore = "_";
-      const space = " ";
-
-      // Игнорируем клавиши "_", пробел
-      if (key === underscore || key === space) {
-        return;
-      }
-
-      // Обновляем цитату, заменяя только первую встречающуюся букву на подчеркивание
-      const updatedQuote = quote.split("");
-      const index = updatedQuote.findIndex((char) => char.toLowerCase() === key.toLowerCase() && char !== underscore);
-
-      if (index !== -1) {
-        updatedQuote[index] = underscore;
-        setQuote(updatedQuote.join(""));
-
-        // Создаем новую строку исключений
-        setException((prevException) => prevException + key);
-      }
-
-      // Проверяем, если все символы удалены, то вызываем победу
-      if (updatedQuote.every((char) => char === underscore || char === space)) {
-        setVictory((prevVictory) => prevVictory + 1);
-        setConfetti(true);
-        setTimeout(() => setConfetti(false), 4000);
-      }
-    };
-
-    setInitialCounter((prevCounter) => {
-      if (prevCounter > 0) {
-        return prevCounter - 1;
-      } else {
-        // setStart(true);
-        return prevCounter;
-      }
-    });
-
-
-
-
-    window.addEventListener("keydown", keyDownHandler);
-    return () => {
-      window.removeEventListener("keydown", keyDownHandler);
-    };
-  }, [quote, exception, victory, confetti]);
+    if (start) {
+      const newQuote = generateQuote();
+      setException(newQuote);
+      setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
+    }
+  }, [start]);
 
   return (
     <GameContext.Provider
       value={{
+        confetti,
         start,
         setStart,
         victory,
         setVictory,
         exception,
-        setException,
-        initialCounter,
-        setInitialCounter,
-        isPaused,
-        togglePause,
-        quote,
-        generateQuote,
+        counter,
         quoteLetters,
-        returnQuoteLetters,
       }}
     >
       {children}
     </GameContext.Provider>
   );
 };
+
+export const useGame = () => useContext(GameContext);
