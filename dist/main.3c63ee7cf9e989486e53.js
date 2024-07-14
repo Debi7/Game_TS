@@ -216,8 +216,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root {
 }
 
 * {
-  font-family: "Philosopher", sans-serif;
   box-sizing: border-box;
+  font-family: "Philosopher", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
@@ -226,20 +226,31 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root {
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
+#root {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--html-bg);
   height: 100%;
+  width: 100%;
   overflow: hidden;
-  margin: 0;
 }
 
 h1 {
   font-size: 2.5em;
   color: red;
   font-style: italic;
+}
+
+.status-text {
+  text-align: center;
+}
+
+.emoji {
+  font-size: 32px;
+  margin-right: 8px;
+  font-style: normal;
 }
 
 .section-quote {
@@ -346,16 +357,20 @@ button:focus {
   opacity: 0;
 }
 
+.child {
+  width: 100%;
+  height: 100%;
+}
+
 .btnRun {
   min-height: 12px;
   padding: 4px 10px;
 }
 
 /* responsive */
-@media (max-width: 768px) {
-  .section-quote {
-    padding: 15px;
-    width: 80%;
+@media (min-width: 1024px) {
+  .emoji {
+    font-size: 27px;
   }
   .timer {
     width: 100px;
@@ -373,10 +388,9 @@ button:focus {
     padding: 8px 16px;
   }
 }
-@media (max-width: 480px) {
-  .section-quote {
-    padding: 10px;
-    width: 90%;
+@media (min-width: 425px) and (max-width: 1024px) {
+  .emoji {
+    font-size: 21px;
   }
   .timer {
     width: 80px;
@@ -398,17 +412,16 @@ button:focus {
     align-items: flex-start;
   }
 }
-@media (max-width: 320px) {
-  .section-quote {
-    padding: 5px;
-    width: 95%;
+@media (max-width: 425px) {
+  .emoji {
+    font-size: 18px;
   }
   .timer {
     width: 60px;
     font-size: 10px;
   }
   h1 {
-    font-size: 1.2em;
+    font-size: 1em;
   }
   .badge {
     padding: 1px 2px;
@@ -418,7 +431,7 @@ button:focus {
     font-size: 10px;
     padding: 4px 8px;
   }
-}`, "",{"version":3,"sources":["webpack://./src/styles/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;EACA,6BAAA;EACA,qBAAA;AACF;;AAEA;EACE,sCAAA;EACA,sBAAA;EACA,mCAAA;EACA,kCAAA;EACA,kCAAA;EACA,UAAA;EACA,mBAAA;EACA,wCAAA;AACF;;AAEA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,gCAAA;EACA,YAAA;EACA,gBAAA;EACA,SAAA;AACF;;AAEA;EACE,gBAAA;EACA,UAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,WAAA;EACA,gBAAA;AACF;;AAEA;EACE,mCAAA;EACA,8BAAA;EACA,kBAAA;EACA,sBAAA;EACA,mBAAA;EACA,kBAAA;EACA,kBAAA;AACF;;AAEA;EACE,8BAAA;EACA,kBAAA;EACA,WAAA;EACA,cAAA;EACA,YAAA;EACA,OAAA;EACA,WAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,mCAAA;EACA,WAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,mBAAA;AACF;;AAEA;EACE,gBAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,8BAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,eAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;EACA,YAAA;AACF;;AAEA;EACE,8BAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,oBAAA;EACA,iBAAA;EACA,mBAAA;AACF;;AAEA;;EAEE,aAAA;AACF;;AAEA;EACE,UAAA;EACA,+BAAA;AACF;;AAEA;EACE,UAAA;AACF;;AAEA;EACE,gBAAA;EACA,iBAAA;AACF;;AAKA,eAAA;AAEA;EACE;IACE,aAAA;IACA,UAAA;EAHF;EAMA;IACE,YAAA;IACA,eAAA;EAJF;EAOA;IACE,cAAA;EALF;EAQA;IACE,gBAAA;IACA,eAAA;EANF;EASA;IACE,eAAA;IACA,iBAAA;EAPF;AACF;AAUA;EACE;IACE,aAAA;IACA,UAAA;EARF;EAWA;IACE,WAAA;IACA,eAAA;EATF;EAYA;IACE,gBAAA;EAVF;EAaA;IACE,gBAAA;IACA,eAAA;EAXF;EAcA;IACE,eAAA;IACA,iBAAA;EAZF;EAeA;IACE,sBAAA;IACA,uBAAA;EAbF;AACF;AAgBA;EACE;IACE,YAAA;IACA,UAAA;EAdF;EAiBA;IACE,WAAA;IACA,eAAA;EAfF;EAkBA;IACE,gBAAA;EAhBF;EAmBA;IACE,gBAAA;IACA,eAAA;EAjBF;EAoBA;IACE,eAAA;IACA,gBAAA;EAlBF;AACF","sourcesContent":[":root {\r\n  --white: #fff;\r\n  --black: #111;\r\n  --html-bg: rgb(244, 244, 244);\r\n  --wrapper-bg: #fee6e3;\r\n}\r\n\r\n* {\r\n  font-family: \"Philosopher\", sans-serif;\r\n  box-sizing: border-box;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-rendering: geometricPrecision;\r\n  outline: 0;\r\n  outline-style: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\nbody {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  background-color: var(--html-bg);\r\n  height: 100%;\r\n  overflow: hidden;\r\n  margin: 0;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.section-quote {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  width: 100%;\r\n  max-width: 600px;\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--wrapper-bg);\r\n  border: 2px solid var(--black);\r\n  border-radius: 8px;\r\n  box-sizing: border-box;\r\n  color: var(--black);\r\n  padding: 20px 25px;\r\n  position: relative;\r\n}\r\n\r\n.wrapper:after {\r\n  background-color: var(--black);\r\n  border-radius: 8px;\r\n  content: \"\";\r\n  display: block;\r\n  height: 100%;\r\n  left: 0;\r\n  width: 100%;\r\n  position: absolute;\r\n  top: -2px;\r\n  transform: translate(8px, 8px);\r\n  transition: transform 0.2s ease-out;\r\n  z-index: -1;\r\n}\r\n\r\n.keyboard {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.quote-letters-count {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.badge {\r\n  padding: 4px 8px;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  margin-left: 4px;\r\n  color: var(--white);\r\n  background-color: var(--black);\r\n}\r\n\r\n.info-wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.start-btn-wrapper {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.timer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  margin-top: 20px;\r\n  width: 121px;\r\n}\r\n\r\nbutton {\r\n  background-color: var(--black);\r\n  border-radius: 4px;\r\n  border-style: none;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  min-height: 44px;\r\n  padding: 9px 20px;\r\n  text-align: center;\r\n  text-transform: none;\r\n  user-select: none;\r\n  margin-bottom: 20px;\r\n}\r\n\r\nbutton:hover,\r\nbutton:focus {\r\n  opacity: 0.75;\r\n}\r\n\r\n.opacity-on {\r\n  opacity: 1;\r\n  transition: opacity 1s ease-out;\r\n}\r\n\r\n.opacity-off {\r\n  opacity: 0;\r\n}\r\n\r\n.btnRun {\r\n  min-height: 12px;\r\n  padding: 4px 10px;\r\n}\r\n\r\n\r\n\r\n\r\n/* responsive */\r\n\r\n@media (max-width: 768px) {\r\n  .section-quote {\r\n    padding: 15px;\r\n    width: 80%;\r\n  }\r\n\r\n  .timer {\r\n    width: 100px;\r\n    font-size: 14px;\r\n  }\r\n\r\n  h1 {\r\n    font-size: 2em;\r\n  }\r\n\r\n  .badge {\r\n    padding: 2px 6px;\r\n    font-size: 14px;\r\n  }\r\n\r\n  button {\r\n    font-size: 14px;\r\n    padding: 8px 16px;\r\n  }\r\n}\r\n\r\n@media (max-width: 480px) {\r\n  .section-quote {\r\n    padding: 10px;\r\n    width: 90%;\r\n  }\r\n\r\n  .timer {\r\n    width: 80px;\r\n    font-size: 12px;\r\n  }\r\n\r\n  h1 {\r\n    font-size: 1.5em;\r\n  }\r\n\r\n  .badge {\r\n    padding: 2px 4px;\r\n    font-size: 12px;\r\n  }\r\n\r\n  button {\r\n    font-size: 12px;\r\n    padding: 6px 12px;\r\n  }\r\n\r\n  .info-wrapper {\r\n    flex-direction: column;\r\n    align-items: flex-start;\r\n  }\r\n}\r\n\r\n@media (max-width: 320px) {\r\n  .section-quote {\r\n    padding: 5px;\r\n    width: 95%;\r\n  }\r\n\r\n  .timer {\r\n    width: 60px;\r\n    font-size: 10px;\r\n  }\r\n\r\n  h1 {\r\n    font-size: 1.2em;\r\n  }\r\n\r\n  .badge {\r\n    padding: 1px 2px;\r\n    font-size: 10px;\r\n  }\r\n\r\n  button {\r\n    font-size: 10px;\r\n    padding: 4px 8px;\r\n  }\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/index.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,aAAA;EACA,6BAAA;EACA,qBAAA;AACF;;AAEA;EACE,sBAAA;EACA,sCAAA;EACA,mCAAA;EACA,kCAAA;EACA,kCAAA;EACA,UAAA;EACA,mBAAA;EACA,wCAAA;AACF;;AAEA;EACE,kBAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,gCAAA;EACA,YAAA;EACA,WAAA;EACA,gBAAA;AACF;;AAEA;EACE,gBAAA;EACA,UAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;AACF;;AAEA;EACE,eAAA;EACA,iBAAA;EACA,kBAAA;AACF;;AAEA;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,WAAA;EACA,gBAAA;AACF;;AAEA;EACE,mCAAA;EACA,8BAAA;EACA,kBAAA;EACA,sBAAA;EACA,mBAAA;EACA,kBAAA;EACA,kBAAA;AACF;;AAEA;EACE,8BAAA;EACA,kBAAA;EACA,WAAA;EACA,cAAA;EACA,YAAA;EACA,OAAA;EACA,WAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,mCAAA;EACA,WAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,mBAAA;AACF;;AAEA;EACE,gBAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,8BAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,eAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,gBAAA;EACA,YAAA;AACF;;AAEA;EACE,8BAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,oBAAA;EACA,iBAAA;EACA,mBAAA;AACF;;AAEA;;EAEE,aAAA;AACF;;AAEA;EACE,UAAA;EACA,+BAAA;AACF;;AAEA;EACE,UAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;AACF;;AAEA;EACE,gBAAA;EACA,iBAAA;AACF;;AAGA,eAAA;AACA;EACE;IACE,eAAA;EAAF;EAGA;IACE,YAAA;IACA,eAAA;EADF;EAIA;IACE,cAAA;EAFF;EAKA;IACE,gBAAA;IACA,eAAA;EAHF;EAMA;IACE,eAAA;IACA,iBAAA;EAJF;AACF;AAOA;EACE;IACE,eAAA;EALF;EAQA;IACE,WAAA;IACA,eAAA;EANF;EASA;IACE,gBAAA;EAPF;EAUA;IACE,gBAAA;IACA,eAAA;EARF;EAWA;IACE,eAAA;IACA,iBAAA;EATF;EAYA;IACE,sBAAA;IACA,uBAAA;EAVF;AACF;AAaA;EACE;IACE,eAAA;EAXF;EAcA;IACE,WAAA;IACA,eAAA;EAZF;EAeA;IACE,cAAA;EAbF;EAgBA;IACE,gBAAA;IACA,eAAA;EAdF;EAiBA;IACE,eAAA;IACA,gBAAA;EAfF;AACF","sourcesContent":[":root {\r\n  --white: #fff;\r\n  --black: #111;\r\n  --html-bg: rgb(244, 244, 244);\r\n  --wrapper-bg: #fee6e3;\r\n}\r\n\r\n* {\r\n  box-sizing: border-box;\r\n  font-family: \"Philosopher\", sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-rendering: geometricPrecision;\r\n  outline: 0;\r\n  outline-style: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n#root {\r\n  position: relative;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  background-color: var(--html-bg);\r\n  height: 100%;\r\n  width: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5em;\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.status-text {\r\n  text-align: center;\r\n}\r\n\r\n.emoji {\r\n  font-size: 32px;\r\n  margin-right: 8px;\r\n  font-style: normal;\r\n}\r\n\r\n.section-quote {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  width: 100%;\r\n  max-width: 600px;\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--wrapper-bg);\r\n  border: 2px solid var(--black);\r\n  border-radius: 8px;\r\n  box-sizing: border-box;\r\n  color: var(--black);\r\n  padding: 20px 25px;\r\n  position: relative;\r\n}\r\n\r\n.wrapper:after {\r\n  background-color: var(--black);\r\n  border-radius: 8px;\r\n  content: \"\";\r\n  display: block;\r\n  height: 100%;\r\n  left: 0;\r\n  width: 100%;\r\n  position: absolute;\r\n  top: -2px;\r\n  transform: translate(8px, 8px);\r\n  transition: transform 0.2s ease-out;\r\n  z-index: -1;\r\n}\r\n\r\n.keyboard {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.quote-letters-count {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.badge {\r\n  padding: 4px 8px;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  margin-left: 4px;\r\n  color: var(--white);\r\n  background-color: var(--black);\r\n}\r\n\r\n.info-wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.start-btn-wrapper {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.timer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  margin-top: 20px;\r\n  width: 121px;\r\n}\r\n\r\nbutton {\r\n  background-color: var(--black);\r\n  border-radius: 4px;\r\n  border-style: none;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  min-height: 44px;\r\n  padding: 9px 20px;\r\n  text-align: center;\r\n  text-transform: none;\r\n  user-select: none;\r\n  margin-bottom: 20px;\r\n}\r\n\r\nbutton:hover,\r\nbutton:focus {\r\n  opacity: 0.75;\r\n}\r\n\r\n.opacity-on {\r\n  opacity: 1;\r\n  transition: opacity 1s ease-out;\r\n}\r\n\r\n.opacity-off {\r\n  opacity: 0;\r\n}\r\n\r\n.child {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.btnRun {\r\n  min-height: 12px;\r\n  padding: 4px 10px;\r\n}\r\n\r\n\r\n/* responsive */\r\n@media (min-width: 1024px) {\r\n  .emoji {\r\n    font-size: 27px;\r\n  }\r\n\r\n  .timer {\r\n    width: 100px;\r\n    font-size: 14px;\r\n  }\r\n\r\n  h1 {\r\n    font-size: 2em;\r\n  }\r\n\r\n  .badge {\r\n    padding: 2px 6px;\r\n    font-size: 14px;\r\n  }\r\n\r\n  button {\r\n    font-size: 14px;\r\n    padding: 8px 16px;\r\n  }\r\n}\r\n\r\n@media (min-width: 425px) and (max-width: 1024px) {\r\n  .emoji {\r\n    font-size: 21px;\r\n  }\r\n\r\n  .timer {\r\n    width: 80px;\r\n    font-size: 12px;\r\n  }\r\n\r\n  h1 {\r\n    font-size: 1.5em;\r\n  }\r\n\r\n  .badge {\r\n    padding: 2px 4px;\r\n    font-size: 12px;\r\n  }\r\n\r\n  button {\r\n    font-size: 12px;\r\n    padding: 6px 12px;\r\n  }\r\n\r\n  .info-wrapper {\r\n    flex-direction: column;\r\n    align-items: flex-start;\r\n  }\r\n}\r\n\r\n@media (max-width: 425px) {\r\n  .emoji {\r\n    font-size: 18px;\r\n  }\r\n\r\n  .timer {\r\n    width: 60px;\r\n    font-size: 10px;\r\n  }\r\n\r\n  h1 {\r\n    font-size: 1em;\r\n  }\r\n\r\n  .badge {\r\n    padding: 1px 2px;\r\n    font-size: 10px;\r\n  }\r\n\r\n  button {\r\n    font-size: 10px;\r\n    padding: 4px 8px;\r\n  }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -36216,7 +36229,7 @@ __webpack_require__.r(__webpack_exports__);
 var ConfettiSplash = function (_a) {
     var confetti = _a.confetti;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "opacity-on ".concat(confetti ? '' : 'opacity-off') },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_confetti__WEBPACK_IMPORTED_MODULE_1___default()), null)));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_confetti__WEBPACK_IMPORTED_MODULE_1___default()), { className: "child" })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ConfettiSplash);
 
@@ -36311,12 +36324,12 @@ var emojiImage = "😊";
 var Status = function (_a) {
     var start = _a.start, setStart = _a.setStart;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: "flex", alignItems: "center" } },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, typeof start === "undefined"
-                ? "\u23F1 \u0426\u0435\u043B\u044C \u0438\u0433\u0440\u044B, \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u0441\u0442\u0440\u0435\u0435 \u043D\u0430\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043A\u0432\u044B \u0438 \u0437\u043D\u0430\u043A\u0438, \u043A\u0440\u043E\u043C\u0435 \u043F\u0440\u043E\u0431\u0435\u043B\u043E\u0432, \u0447\u0442\u043E\u0431\u044B \u0443\u043B\u043E\u0436\u0438\u0442\u044C\u0441\u044F \u0432 \u0442\u0430\u0439\u043C\u0435\u0440."
-                : react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { style: { fontSize: "32px", marginRight: "8px", fontStyle: "normal" } }, emojiImage),
-                    " \u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437"))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, typeof start === "undefined"
+            ? "\u23F1 \u0426\u0435\u043B\u044C \u0438\u0433\u0440\u044B, \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u0441\u0442\u0440\u0435\u0435 \u043D\u0430\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043A\u0432\u044B \u0438 \u0437\u043D\u0430\u043A\u0438, \u043A\u0440\u043E\u043C\u0435 \u043F\u0440\u043E\u0431\u0435\u043B\u043E\u0432, \u0447\u0442\u043E\u0431\u044B \u0443\u043B\u043E\u0436\u0438\u0442\u044C\u0441\u044F \u0432 \u0442\u0430\u0439\u043C\u0435\u0440."
+            : react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "status-text" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "emoji" }, emojiImage),
+                    "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437"))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "start-btn-wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: function () { return setStart(true); } }, "\u0421\u0442\u0430\u0440\u0442"))));
 };
@@ -36389,7 +36402,10 @@ var GameProvider = function (_a) {
     var returnQuoteLetters = function (quote) { return quote.replace(/\s/g, '').split('_').join(''); };
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), confetti = _b[0], setConfetti = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(), start = _c[0], setStart = _c[1];
-    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0), victory = _d[0], setVictory = _d[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
+        var savedVictory = localStorage.getItem('victory');
+        return savedVictory ? Number(savedVictory) : 0;
+    }), victory = _d[0], setVictory = _d[1];
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(generateQuote), exception = _e[0], setException = _e[1];
     var quoteLetters = returnQuoteLetters(exception);
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.floor(quoteLetters.length / 2)), counter = _f[0], setCounter = _f[1];
@@ -36415,7 +36431,11 @@ var GameProvider = function (_a) {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         if (!quoteLetters) {
             var newQuote = generateQuote();
-            setVictory(function (prevVictory) { return prevVictory + 1; });
+            setVictory(function (prevVictory) {
+                var newVictory = prevVictory + 1;
+                localStorage.setItem('victory', newVictory.toString());
+                return newVictory;
+            });
             setConfetti(true);
             setException(newQuote);
             setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
@@ -39047,7 +39067,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("3bc7bcfdbe3621f1c936")
+/******/ 		__webpack_require__.h = () => ("fd6169d92a637ea39c23")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40079,4 +40099,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.7ad704b381be0cbb6a55.js.map
+//# sourceMappingURL=main.3c63ee7cf9e989486e53.js.map
