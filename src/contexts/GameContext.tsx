@@ -32,10 +32,12 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
 
   const [confetti, setConfetti] = useState(false);
   const [start, setStart] = useState<undefined | boolean>();
+
   const [victory, setVictory] = useState<number>(() => {
-    const savedVictory = localStorage.getItem('victory');
+    const savedVictory = sessionStorage.getItem('victory');
     return savedVictory ? Number(savedVictory) : 0;
   });
+
   const [exception, setException] = useState(generateQuote);
   const quoteLetters = returnQuoteLetters(exception);
   const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
@@ -68,11 +70,13 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (!quoteLetters) {
       const newQuote = generateQuote();
+
       setVictory((prevVictory) => {
         const newVictory = prevVictory + 1;
-        localStorage.setItem('victory', newVictory.toString());
+        sessionStorage.setItem('victory', newVictory.toString());
         return newVictory;
       });
+
       setConfetti(true);
       setException(newQuote);
       setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
