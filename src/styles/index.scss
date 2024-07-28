@@ -60,21 +60,21 @@ h1 {
   color: var(--black);
   padding: 20px 25px;
   position: relative;
-}
 
-.wrapper:after {
-  background-color: var(--black);
-  border-radius: 8px;
-  content: "";
-  display: block;
-  height: 100%;
-  left: 0;
-  width: 100%;
-  position: absolute;
-  top: -2px;
-  transform: translate(8px, 8px);
-  transition: transform 0.2s ease-out;
-  z-index: -1;
+  &::after {
+    background-color: var(--black);
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform 0.2s ease-out;
+    z-index: -1;
+  }
 }
 
 .keyboard {
@@ -131,11 +131,11 @@ button {
   text-transform: none;
   user-select: none;
   margin-bottom: 20px;
-}
 
-button:hover,
-button:focus {
-  opacity: 0.75;
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+  }
 }
 
 .opacity-on {
@@ -156,7 +156,6 @@ button:focus {
   min-height: 12px;
   padding: 4px 10px;
 }
-
 
 /* responsive */
 @media (min-width: 1024px) {
