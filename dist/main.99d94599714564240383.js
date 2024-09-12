@@ -36379,6 +36379,100 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sample */ "./node_modules/lodash/sample.js");
 /* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sample__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _data_quotes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/quotes.json */ "./src/data/quotes.json");
+// import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+// import _sample from 'lodash/sample';
+// import quotes from '../data/quotes.json';
+// interface GameContextProps {
+//   confetti: boolean;
+//   start: boolean | undefined;
+//   setStart: (start: boolean | undefined) => void;
+//   victory: number;
+//   setVictory: (victory: number) => void;
+//   exception: string;
+//   counter: number;
+//   quoteLetters: string;
+// }
+// const defaultGameContext: GameContextProps = {
+//   confetti: false,
+//   start: undefined,
+//   setStart: () => { },
+//   victory: 0,
+//   setVictory: () => { },
+//   exception: "",
+//   counter: 0,
+//   quoteLetters: "",
+// };
+// const GameContext = createContext<GameContextProps>(defaultGameContext);
+// export const GameProvider = ({ children }: { children: ReactNode }) => {
+//   const generateQuote = () => _sample(quotes) as string;
+//   const returnQuoteLetters = (quote: string) => quote.replace(/\s/g, '').split('_').join('');
+//   const [confetti, setConfetti] = useState(false);
+//   const [start, setStart] = useState<undefined | boolean>();
+//   const [victory, setVictory] = useState<number>(() => {
+//     const savedVictory = sessionStorage.getItem('victory');
+//     return savedVictory ? Number(savedVictory) : 0;
+//   });
+//   const [exception, setException] = useState(generateQuote);
+//   const quoteLetters = returnQuoteLetters(exception);
+//   const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
+//   useEffect(() => {
+//     const keyDownHandler = (event: KeyboardEvent) => {
+//       const { key } = event;
+//       const underscore = '_';
+//       const space = ' ';
+//       if (key !== underscore && key !== space) {
+//         setException((prevException) => prevException.replace(key, underscore));
+//       }
+//     };
+//     window.addEventListener('keydown', keyDownHandler, false);
+//     return () => window.removeEventListener('keydown', keyDownHandler, false);
+//   }, []);
+//   useEffect(() => {
+//     const timer = counter > 0 ? setTimeout(() => setCounter(counter - 1), 1000) : null;
+//     if (counter === 0) {
+//       setStart(false);
+//     }
+//     return () => clearInterval(timer);
+//   }, [counter]);
+//   useEffect(() => {
+//     if (!quoteLetters) {
+//       const newQuote = generateQuote();
+//       setVictory((prevVictory) => {
+//         const newVictory = prevVictory + 1;
+//         sessionStorage.setItem('victory', newVictory.toString());
+//         return newVictory;
+//       });
+//       setConfetti(true);
+//       setException(newQuote);
+//       setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
+//       setTimeout(() => setConfetti(false), 4000);
+//     }
+//   }, [exception, quoteLetters]);
+//   useEffect(() => {
+//     if (start) {
+//       const newQuote = generateQuote();
+//       setException(newQuote);
+//       setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
+//     }
+//   }, [start]);
+//   return (
+//     <GameContext.Provider
+//       value={{
+//         confetti,
+//         start,
+//         setStart,
+//         victory,
+//         setVictory,
+//         exception,
+//         counter,
+//         quoteLetters,
+//       }}
+//     >
+//       {children}
+//     </GameContext.Provider>
+//   );
+// };
+// export const useGame = () => useContext(GameContext);
 
 
 
@@ -36406,6 +36500,14 @@ var GameProvider = function (_a) {
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(generateQuote), exception = _e[0], setException = _e[1];
     var quoteLetters = returnQuoteLetters(exception);
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.floor(quoteLetters.length / 2)), counter = _f[0], setCounter = _f[1];
+    // Реализация для мобильных устройств
+    var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    // Автофокус на поле при загрузке на мобильных устройствах
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var keyDownHandler = function (event) {
             var key = event.key;
@@ -36418,6 +36520,15 @@ var GameProvider = function (_a) {
         window.addEventListener('keydown', keyDownHandler, false);
         return function () { return window.removeEventListener('keydown', keyDownHandler, false); };
     }, []);
+    // Обработка ввода текста с поля input для мобильных устройств
+    var handleInputChange = function (event) {
+        var inputText = event.target.value;
+        var lastCharacter = inputText[inputText.length - 1];
+        var underscore = '_';
+        setException(function (prevException) {
+            return prevException.replace(lastCharacter, underscore);
+        });
+    };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var timer = counter > 0 ? setTimeout(function () { return setCounter(counter - 1); }, 1000) : null;
         if (counter === 0) {
@@ -36455,7 +36566,19 @@ var GameProvider = function (_a) {
             exception: exception,
             counter: counter,
             quoteLetters: quoteLetters,
-        } }, children));
+        } },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { ref: inputRef, type: "text", style: {
+                position: 'absolute',
+                top: '-9999px',
+                left: '-9999px',
+                opacity: 0,
+                width: '1px',
+                height: '1px',
+                padding: 0,
+                margin: 0,
+                border: 'none',
+            }, onChange: handleInputChange, autoFocus: true }),
+        children));
 };
 var useGame = function () { return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(GameContext); };
 
@@ -39064,7 +39187,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("b908768b0a42476f7ed6")
+/******/ 		__webpack_require__.h = () => ("fb003c23ef3fd8b477f3")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40096,4 +40219,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.c66a078e4494480668be.js.map
+//# sourceMappingURL=main.99d94599714564240383.js.map
