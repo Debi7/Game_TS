@@ -36250,19 +36250,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LettersCount_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../LettersCount/index */ "./src/components/LettersCount/index.tsx");
 /* harmony import */ var _Status_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Status/index */ "./src/components/Status/index.tsx");
 /* harmony import */ var _Victory_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Victory/index */ "./src/components/Victory/index.tsx");
-/* harmony import */ var _MobileInput_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MobileInput/index */ "./src/components/MobileInput/index.tsx");
-/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
-/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/index.scss */ "./src/styles/index.scss");
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
+/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../styles/index.scss */ "./src/styles/index.scss");
 
 
 
 
 
-
+// import MobileInput from '../MobileInput/index';
 
 
 var Game = function () {
-    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__.useGame)(), confetti = _a.confetti, start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, counter = _a.counter, quoteLetters = _a.quoteLetters;
+    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_5__.useGame)(), confetti = _a.confetti, start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, counter = _a.counter, quoteLetters = _a.quoteLetters;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ConfettiSplash_index__WEBPACK_IMPORTED_MODULE_1__["default"], { confetti: confetti }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "section-quote" },
@@ -36273,8 +36272,7 @@ var Game = function () {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, exception),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "info-wrapper" },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount_index__WEBPACK_IMPORTED_MODULE_2__["default"], { quoteLetters: quoteLetters }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MobileInput_index__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);
 
@@ -36302,42 +36300,6 @@ var LettersCount = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "badge" }, quoteLetters === null || quoteLetters === void 0 ? void 0 : quoteLetters.length)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LettersCount);
-
-
-/***/ }),
-
-/***/ "./src/components/MobileInput/index.tsx":
-/*!**********************************************!*\
-  !*** ./src/components/MobileInput/index.tsx ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
-
-
-var MobileInput = function () {
-    var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    var setException = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__.useGame)().setException;
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
-        if (isMobileDevice && inputRef.current) {
-            inputRef.current.focus();
-        }
-    }, []);
-    var handleChange = function (e) {
-        var typedText = e.target.value;
-        setException(typedText);
-    };
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { ref: inputRef, type: "text", style: { width: '1px', height: '1px', opacity: 0, position: 'absolute' }, onChange: handleChange }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MobileInput);
 
 
 /***/ }),
@@ -36418,100 +36380,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sample */ "./node_modules/lodash/sample.js");
 /* harmony import */ var lodash_sample__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sample__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _data_quotes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/quotes.json */ "./src/data/quotes.json");
-// import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
-// import _sample from 'lodash/sample';
-// import quotes from '../data/quotes.json';
-// interface GameContextProps {
-//   confetti: boolean;
-//   start: boolean | undefined;
-//   setStart: (start: boolean | undefined) => void;
-//   victory: number;
-//   setVictory: (victory: number) => void;
-//   exception: string;
-//   counter: number;
-//   quoteLetters: string;
-// }
-// const defaultGameContext: GameContextProps = {
-//   confetti: false,
-//   start: undefined,
-//   setStart: () => { },
-//   victory: 0,
-//   setVictory: () => { },
-//   exception: "",
-//   counter: 0,
-//   quoteLetters: "",
-// };
-// const GameContext = createContext<GameContextProps>(defaultGameContext);
-// export const GameProvider = ({ children }: { children: ReactNode }) => {
-//   const generateQuote = () => _sample(quotes) as string;
-//   const returnQuoteLetters = (quote: string) => quote.replace(/\s/g, '').split('_').join('');
-//   const [confetti, setConfetti] = useState(false);
-//   const [start, setStart] = useState<undefined | boolean>();
-//   const [victory, setVictory] = useState<number>(() => {
-//     const savedVictory = sessionStorage.getItem('victory');
-//     return savedVictory ? Number(savedVictory) : 0;
-//   });
-//   const [exception, setException] = useState(generateQuote);
-//   const quoteLetters = returnQuoteLetters(exception);
-//   const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
-//   useEffect(() => {
-//     const keyDownHandler = (event: KeyboardEvent) => {
-//       const { key } = event;
-//       const underscore = '_';
-//       const space = ' ';
-//       if (key !== underscore && key !== space) {
-//         setException((prevException) => prevException.replace(key, underscore));
-//       }
-//     };
-//     window.addEventListener('keydown', keyDownHandler, false);
-//     return () => window.removeEventListener('keydown', keyDownHandler, false);
-//   }, []);
-//   useEffect(() => {
-//     const timer = counter > 0 ? setTimeout(() => setCounter(counter - 1), 1000) : null;
-//     if (counter === 0) {
-//       setStart(false);
-//     }
-//     return () => clearInterval(timer);
-//   }, [counter]);
-//   useEffect(() => {
-//     if (!quoteLetters) {
-//       const newQuote = generateQuote();
-//       setVictory((prevVictory) => {
-//         const newVictory = prevVictory + 1;
-//         sessionStorage.setItem('victory', newVictory.toString());
-//         return newVictory;
-//       });
-//       setConfetti(true);
-//       setException(newQuote);
-//       setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
-//       setTimeout(() => setConfetti(false), 4000);
-//     }
-//   }, [exception, quoteLetters]);
-//   useEffect(() => {
-//     if (start) {
-//       const newQuote = generateQuote();
-//       setException(newQuote);
-//       setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
-//     }
-//   }, [start]);
-//   return (
-//     <GameContext.Provider
-//       value={{
-//         confetti,
-//         start,
-//         setStart,
-//         victory,
-//         setVictory,
-//         exception,
-//         counter,
-//         quoteLetters,
-//       }}
-//     >
-//       {children}
-//     </GameContext.Provider>
-//   );
-// };
-// export const useGame = () => useContext(GameContext);
 
 
 
@@ -36540,12 +36408,6 @@ var GameProvider = function (_a) {
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(generateQuote), exception = _e[0], setException = _e[1];
     var quoteLetters = returnQuoteLetters(exception);
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.floor(quoteLetters.length / 2)), counter = _f[0], setCounter = _f[1];
-    var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        if (inputRef.current) {
-            inputRef.current.focus();
-        }
-    }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var keyDownHandler = function (event) {
             var key = event.key;
@@ -36558,14 +36420,6 @@ var GameProvider = function (_a) {
         window.addEventListener('keydown', keyDownHandler, false);
         return function () { return window.removeEventListener('keydown', keyDownHandler, false); };
     }, []);
-    var handleInputChange = function (event) {
-        var inputText = event.target.value;
-        var lastCharacter = inputText[inputText.length - 1];
-        var underscore = '_';
-        setException(function (prevException) {
-            return prevException.replace(lastCharacter, underscore);
-        });
-    };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var timer = counter > 0 ? setTimeout(function () { return setCounter(counter - 1); }, 1000) : null;
         if (counter === 0) {
@@ -36603,20 +36457,8 @@ var GameProvider = function (_a) {
             exception: exception,
             counter: counter,
             quoteLetters: quoteLetters,
-            setException: function () { },
-        } },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { ref: inputRef, type: "text", style: {
-                position: 'absolute',
-                top: '-9999px',
-                left: '-9999px',
-                opacity: 0,
-                width: '1px',
-                height: '1px',
-                padding: 0,
-                margin: 0,
-                border: 'none',
-            }, onChange: handleInputChange, autoFocus: true }),
-        children));
+            setException: setException,
+        } }, children));
 };
 var useGame = function () { return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(GameContext); };
 
@@ -39225,7 +39067,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("e372b6a128a664cbf002")
+/******/ 		__webpack_require__.h = () => ("23f172534c6009572d1d")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40257,4 +40099,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.7cea9c6f814c401607bd.js.map
+//# sourceMappingURL=main.1abfcad2a1659bfe23e9.js.map
