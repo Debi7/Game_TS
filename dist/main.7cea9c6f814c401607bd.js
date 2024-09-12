@@ -36193,7 +36193,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./contexts/GameContext */ "./src/contexts/GameContext.tsx");
-/* harmony import */ var _components_Index_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Index/index */ "./src/components/Index/index.tsx");
+/* harmony import */ var _components_Game_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Game/index */ "./src/components/Game/index.tsx");
 
 
 
@@ -36201,7 +36201,7 @@ __webpack_require__.r(__webpack_exports__);
 var container = document.getElementById('root');
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
 root.render(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_contexts_GameContext__WEBPACK_IMPORTED_MODULE_2__.GameProvider, null,
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Index_index__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Game_index__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 
 
 /***/ }),
@@ -36233,10 +36233,10 @@ var ConfettiSplash = function (_a) {
 
 /***/ }),
 
-/***/ "./src/components/Index/index.tsx":
-/*!****************************************!*\
-  !*** ./src/components/Index/index.tsx ***!
-  \****************************************/
+/***/ "./src/components/Game/index.tsx":
+/*!***************************************!*\
+  !*** ./src/components/Game/index.tsx ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -36250,8 +36250,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LettersCount_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../LettersCount/index */ "./src/components/LettersCount/index.tsx");
 /* harmony import */ var _Status_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Status/index */ "./src/components/Status/index.tsx");
 /* harmony import */ var _Victory_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Victory/index */ "./src/components/Victory/index.tsx");
-/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
-/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../styles/index.scss */ "./src/styles/index.scss");
+/* harmony import */ var _MobileInput_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MobileInput/index */ "./src/components/MobileInput/index.tsx");
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
+/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/index.scss */ "./src/styles/index.scss");
 
 
 
@@ -36259,8 +36260,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Index = function () {
-    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_5__.useGame)(), confetti = _a.confetti, start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, counter = _a.counter, quoteLetters = _a.quoteLetters;
+
+var Game = function () {
+    var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__.useGame)(), confetti = _a.confetti, start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, counter = _a.counter, quoteLetters = _a.quoteLetters;
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ConfettiSplash_index__WEBPACK_IMPORTED_MODULE_1__["default"], { confetti: confetti }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "section-quote" },
@@ -36271,9 +36273,10 @@ var Index = function () {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, exception),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "info-wrapper" },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount_index__WEBPACK_IMPORTED_MODULE_2__["default"], { quoteLetters: quoteLetters }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))))));
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MobileInput_index__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);
 
 
 /***/ }),
@@ -36299,6 +36302,42 @@ var LettersCount = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "badge" }, quoteLetters === null || quoteLetters === void 0 ? void 0 : quoteLetters.length)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LettersCount);
+
+
+/***/ }),
+
+/***/ "./src/components/MobileInput/index.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/MobileInput/index.tsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../contexts/GameContext */ "./src/contexts/GameContext.tsx");
+
+
+var MobileInput = function () {
+    var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    var setException = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__.useGame)().setException;
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        var isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+        if (isMobileDevice && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
+    var handleChange = function (e) {
+        var typedText = e.target.value;
+        setException(typedText);
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { ref: inputRef, type: "text", style: { width: '1px', height: '1px', opacity: 0, position: 'absolute' }, onChange: handleChange }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MobileInput);
 
 
 /***/ }),
@@ -36485,6 +36524,7 @@ var defaultGameContext = {
     exception: "",
     counter: 0,
     quoteLetters: "",
+    setException: function () { },
 };
 var GameContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(defaultGameContext);
 var GameProvider = function (_a) {
@@ -36500,9 +36540,7 @@ var GameProvider = function (_a) {
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(generateQuote), exception = _e[0], setException = _e[1];
     var quoteLetters = returnQuoteLetters(exception);
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.floor(quoteLetters.length / 2)), counter = _f[0], setCounter = _f[1];
-    // Реализация для мобильных устройств
     var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    // Автофокус на поле при загрузке на мобильных устройствах
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         if (inputRef.current) {
             inputRef.current.focus();
@@ -36520,7 +36558,6 @@ var GameProvider = function (_a) {
         window.addEventListener('keydown', keyDownHandler, false);
         return function () { return window.removeEventListener('keydown', keyDownHandler, false); };
     }, []);
-    // Обработка ввода текста с поля input для мобильных устройств
     var handleInputChange = function (event) {
         var inputText = event.target.value;
         var lastCharacter = inputText[inputText.length - 1];
@@ -36566,6 +36603,7 @@ var GameProvider = function (_a) {
             exception: exception,
             counter: counter,
             quoteLetters: quoteLetters,
+            setException: function () { },
         } },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { ref: inputRef, type: "text", style: {
                 position: 'absolute',
@@ -39187,7 +39225,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("fb003c23ef3fd8b477f3")
+/******/ 		__webpack_require__.h = () => ("e372b6a128a664cbf002")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40219,4 +40257,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.99d94599714564240383.js.map
+//# sourceMappingURL=main.7cea9c6f814c401607bd.js.map

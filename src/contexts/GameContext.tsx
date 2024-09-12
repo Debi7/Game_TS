@@ -129,6 +129,7 @@ interface GameContextProps {
   exception: string;
   counter: number;
   quoteLetters: string;
+  setException: (exception: string) => void;
 }
 
 const defaultGameContext: GameContextProps = {
@@ -140,6 +141,7 @@ const defaultGameContext: GameContextProps = {
   exception: "",
   counter: 0,
   quoteLetters: "",
+  setException: () => { },
 };
 
 const GameContext = createContext<GameContextProps>(defaultGameContext);
@@ -159,10 +161,8 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const quoteLetters = returnQuoteLetters(exception);
   const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
 
-  // Реализация для мобильных устройств
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // Автофокус на поле при загрузке на мобильных устройствах
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -184,7 +184,6 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
     return () => window.removeEventListener('keydown', keyDownHandler, false);
   }, []);
 
-  // Обработка ввода текста с поля input для мобильных устройств
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
     const lastCharacter = inputText[inputText.length - 1];
@@ -241,6 +240,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
         exception,
         counter,
         quoteLetters,
+        setException: () => { },
       }}
     >
       {/* Скрытый input для мобильных устройств */}

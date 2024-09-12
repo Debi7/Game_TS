@@ -3,11 +3,11 @@ import ConfettiSplash from '../ConfettiSplash/index';
 import LettersCount from '../LettersCount/index';
 import Status from '../Status/index';
 import Victory from '../Victory/index';
-
+import MobileInput from '../MobileInput/index';
 import { useGame } from '../../contexts/GameContext';
 import '../../styles/index.scss';
 
-const Index: FC = () => {
+const Game: FC = () => {
   const { confetti, start, setStart, victory, exception, counter, quoteLetters } = useGame();
 
   return (
@@ -28,9 +28,10 @@ const Index: FC = () => {
             <Status start={start} setStart={setStart} />
           )}
         </div>
+        <MobileInput />
       </div>
     </>
   );
 };
 
-export default Index;
+export default Game;
