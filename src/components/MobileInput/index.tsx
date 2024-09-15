@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useGame } from '../../contexts/GameContext';
+interface MobileInputProps {
+  inputRef: React.RefObject<HTMLInputElement>;
+}
 
-const MobileInput = () => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
   const { start, setException, exception } = useGame();
 
   useEffect(() => {
@@ -12,12 +14,6 @@ const MobileInput = () => {
       inputRef.current.focus();
     }
   }, [start]);
-
-  const handleScreenClick = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
@@ -34,24 +30,22 @@ const MobileInput = () => {
   };
 
   return (
-    <div id="root" onClick={handleScreenClick}>
-      <input
-        ref={inputRef}
-        type="text"
-        style={{
-          position: 'absolute',
-          top: '-9999px',
-          left: '-9999px',
-          opacity: 0,
-          width: '1px',
-          height: '1px',
-          padding: 0,
-          margin: 0,
-          border: 'none',
-        }}
-        onChange={handleInputChange}
-      />
-    </div>
+    <input
+      ref={inputRef}
+      type="text"
+      style={{
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        visibility: 'hidden',
+        width: '1px',
+        height: '1px',
+        padding: 0,
+        margin: 0,
+        border: 'none',
+      }}
+      onChange={handleInputChange}
+    />
   );
 };
 

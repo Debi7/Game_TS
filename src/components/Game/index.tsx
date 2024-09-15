@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import ConfettiSplash from '../ConfettiSplash/index';
 import LettersCount from '../LettersCount/index';
 import Status from '../Status/index';
@@ -9,11 +9,18 @@ import '../../styles/index.scss';
 
 const Game: FC = () => {
   const { confetti, start, setStart, victory, exception, counter, quoteLetters } = useGame();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleScreenClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   return (
     <>
       <ConfettiSplash confetti={confetti} />
-      <div className="section-quote">
+      <div className="section-quote" onClick={handleScreenClick}>
         <div className="wrapper">
           {start ? (
             <>
@@ -28,7 +35,7 @@ const Game: FC = () => {
             <Status start={start} setStart={setStart} />
           )}
         </div>
-        <MobileInput />
+        <MobileInput inputRef={inputRef} />
       </div>
     </>
   );
