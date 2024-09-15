@@ -36276,12 +36276,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var isMobileDevice = function () { return /android|iphone|ipad|ipod/i.test(navigator.userAgent); };
 var Game = function () {
     var _a = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_6__.useGame)(), confetti = _a.confetti, start = _a.start, setStart = _a.setStart, victory = _a.victory, exception = _a.exception, counter = _a.counter, quoteLetters = _a.quoteLetters;
     var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     var inputFocus = function () {
-        if (isMobileDevice() && start && inputRef.current) {
+        if ((0,_MobileInput_index__WEBPACK_IMPORTED_MODULE_5__.isMobileDevice)() && start && inputRef.current) {
             inputRef.current.focus();
         }
     };
@@ -36296,7 +36295,7 @@ var Game = function () {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "info-wrapper" },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LettersCount_index__WEBPACK_IMPORTED_MODULE_2__["default"], { quoteLetters: quoteLetters }),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Victory_index__WEBPACK_IMPORTED_MODULE_4__["default"], { victory: victory })))) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Status_index__WEBPACK_IMPORTED_MODULE_3__["default"], { start: start, setStart: setStart }))),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MobileInput_index__WEBPACK_IMPORTED_MODULE_5__["default"], { inputRef: inputRef, inputFocus: inputFocus }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MobileInput_index__WEBPACK_IMPORTED_MODULE_5__["default"], { inputRef: inputRef }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);
 
@@ -36345,13 +36344,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MobileInput = function (_a) {
-    var inputRef = _a.inputRef, inputFocus = _a.inputFocus;
+    var inputRef = _a.inputRef;
     var _b = (0,_contexts_GameContext__WEBPACK_IMPORTED_MODULE_1__.useGame)(), start = _b.start, setException = _b.setException, exception = _b.exception;
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        if (start) {
-            inputFocus();
+        var isMobileDevice = function () { return /android|iphone|ipad|ipod/i.test(navigator.userAgent); };
+        if (isMobileDevice && start && inputRef.current) {
+            inputRef.current.focus();
         }
-    }, [start, inputFocus]);
+    }, [start]);
     var handleInputChange = function (event) {
         var inputText = event.target.value;
         var underscore = '_';
@@ -36365,8 +36365,8 @@ var MobileInput = function (_a) {
     };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { ref: inputRef, type: "text", style: {
             position: 'absolute',
-            top: '0',
-            left: '0',
+            top: '1px',
+            left: '1px',
             visibility: 'hidden',
             width: '1px',
             height: '1px',
@@ -39143,7 +39143,7 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("10c7791748664860bfca")
+/******/ 		__webpack_require__.h = () => ("393b69cc67aaa52d4590")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -40175,4 +40175,4 @@ module.exports = /*#__PURE__*/JSON.parse('["Чем умнее человек, т
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.8dc60f048e045b020785.js.map
+//# sourceMappingURL=main.f58bca318d1273a9fad7.js.map

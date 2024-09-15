@@ -3,7 +3,7 @@ import ConfettiSplash from '../ConfettiSplash/index';
 import LettersCount from '../LettersCount/index';
 import Status from '../Status/index';
 import Victory from '../Victory/index';
-import MobileInput, { isMobileDevice } from '../MobileInput/index';
+import MobileInput from '../MobileInput/index';
 import { useGame } from '../../contexts/GameContext';
 import '../../styles/index.scss';
 
@@ -13,15 +13,17 @@ const Game: FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const inputFocus = () => {
-    if (isMobileDevice() && start && inputRef.current) {
+    const isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    if (isMobileDevice && start && inputRef.current) {
       inputRef.current.focus();
     }
   };
 
   return (
-    <>
+    <div className="root" onClick={inputFocus}>
       <ConfettiSplash confetti={confetti} />
-      <div className="section-quote" onClick={inputFocus}>
+      <div className="section-quote">
         <div className="wrapper">
           {start ? (
             <>
@@ -38,7 +40,7 @@ const Game: FC = () => {
         </div>
         <MobileInput inputRef={inputRef} />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -5,13 +5,13 @@ interface MobileInputProps {
   inputRef: React.RefObject<HTMLInputElement>;
 }
 
-export const isMobileDevice = () => /android|iphone|ipad|ipod/i.test(navigator.userAgent);
-
 const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
   const { start, setException, exception } = useGame();
 
   useEffect(() => {
-    if (isMobileDevice() && start && inputRef.current) {
+    const isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    if (isMobileDevice && start && inputRef.current) {
       inputRef.current.focus();
     }
   }, [start]);
@@ -36,8 +36,8 @@ const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
       type="text"
       style={{
         position: 'absolute',
-        top: '0',
-        left: '0',
+        top: '1px',
+        left: '1px',
         visibility: 'hidden',
         width: '1px',
         height: '1px',
