@@ -7,12 +7,15 @@ import MobileInput from '../MobileInput/index';
 import { useGame } from '../../contexts/GameContext';
 import '../../styles/index.scss';
 
+
+const isMobileDevice = () => /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+
 const Game: FC = () => {
   const { confetti, start, setStart, victory, exception, counter, quoteLetters } = useGame();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleScreenClick = () => {
-    if (inputRef.current) {
+  const inputFocus = () => {
+    if (isMobileDevice() && start && inputRef.current) {
       inputRef.current.focus();
     }
   };
@@ -20,7 +23,7 @@ const Game: FC = () => {
   return (
     <>
       <ConfettiSplash confetti={confetti} />
-      <div className="section-quote" onClick={handleScreenClick}>
+      <div className="section-quote" onClick={inputFocus}>
         <div className="wrapper">
           {start ? (
             <>
@@ -35,7 +38,10 @@ const Game: FC = () => {
             <Status start={start} setStart={setStart} />
           )}
         </div>
-        <MobileInput inputRef={inputRef} />
+        <MobileInput
+          inputRef={inputRef}
+          inputFocus={inputFocus}
+        />
       </div>
     </>
   );

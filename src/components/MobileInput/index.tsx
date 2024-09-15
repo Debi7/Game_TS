@@ -1,19 +1,19 @@
 import React, { FC, useEffect } from 'react';
 import { useGame } from '../../contexts/GameContext';
+
 interface MobileInputProps {
   inputRef: React.RefObject<HTMLInputElement>;
+  inputFocus: () => void;
 }
 
-const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
+const MobileInput: FC<MobileInputProps> = ({ inputRef, inputFocus }) => {
   const { start, setException, exception } = useGame();
 
   useEffect(() => {
-    const isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
-
-    if (isMobileDevice && start && inputRef.current) {
-      inputRef.current.focus();
+    if (start) {
+      inputFocus();
     }
-  }, [start]);
+  }, [start, inputFocus]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
