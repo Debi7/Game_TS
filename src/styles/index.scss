@@ -158,6 +158,25 @@ button {
 }
 
 /* responsive */
+@media (max-width: 1024px) {
+  .section-quote {
+    top: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-quote {
+    top: 25%;
+  }
+}
+
+@media (max-width: 425px) {
+  .section-quote {
+    top: 21%;
+  }
+}
+
+
 @media (min-width: 1024px) {
   .emoji {
     font-size: 27px;
