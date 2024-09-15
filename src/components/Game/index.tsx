@@ -3,12 +3,10 @@ import ConfettiSplash from '../ConfettiSplash/index';
 import LettersCount from '../LettersCount/index';
 import Status from '../Status/index';
 import Victory from '../Victory/index';
-import MobileInput from '../MobileInput/index';
+import MobileInput, { isMobileDevice } from '../MobileInput/index';
 import { useGame } from '../../contexts/GameContext';
 import '../../styles/index.scss';
 
-
-const isMobileDevice = () => /android|iphone|ipad|ipod/i.test(navigator.userAgent);
 
 const Game: FC = () => {
   const { confetti, start, setStart, victory, exception, counter, quoteLetters } = useGame();
@@ -38,10 +36,7 @@ const Game: FC = () => {
             <Status start={start} setStart={setStart} />
           )}
         </div>
-        <MobileInput
-          inputRef={inputRef}
-          inputFocus={inputFocus}
-        />
+        <MobileInput inputRef={inputRef} />
       </div>
     </>
   );
