@@ -13,6 +13,12 @@ const MobileInput = () => {
     }
   }, [start]);
 
+  const handleScreenClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
     const underscore = '_';
@@ -27,24 +33,25 @@ const MobileInput = () => {
     }
   };
 
-
   return (
-    <input
-      ref={inputRef}
-      type="text"
-      style={{
-        position: 'absolute',
-        top: '-9999px',
-        left: '-9999px',
-        opacity: 0,
-        width: '1px',
-        height: '1px',
-        padding: 0,
-        margin: 0,
-        border: 'none',
-      }}
-      onChange={handleInputChange}
-    />
+    <div id="root" onClick={handleScreenClick}>
+      <input
+        ref={inputRef}
+        type="text"
+        style={{
+          position: 'absolute',
+          top: '-9999px',
+          left: '-9999px',
+          opacity: 0,
+          width: '1px',
+          height: '1px',
+          padding: 0,
+          margin: 0,
+          border: 'none',
+        }}
+        onChange={handleInputChange}
+      />
+    </div>
   );
 };
 
