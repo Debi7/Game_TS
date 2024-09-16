@@ -38,7 +38,7 @@ const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
         position: 'absolute',
         top: '1px',
         left: '1px',
-        visibility: 'hidden',
+        opacity: 0,
         width: '1px',
         height: '1px',
         padding: 0,
