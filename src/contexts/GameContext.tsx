@@ -11,6 +11,8 @@ interface GameContextProps {
   exception: string;
   counter: number;
   quoteLetters: string;
+  currentIndex: number;
+  setCurrentIndex: (index: number) => void;
   setException: (exception: string) => void;
 }
 
@@ -23,6 +25,8 @@ const defaultGameContext: GameContextProps = {
   exception: "",
   counter: 0,
   quoteLetters: "",
+  currentIndex: 0,
+  setCurrentIndex: () => { },
   setException: () => { },
 };
 
@@ -44,6 +48,8 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const quoteLetters = returnQuoteLetters(exception);
   const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
 
+  const [currentIndex, setCurrentIndex] = useState(0); // отслеживаем текущий индекс
+
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       const { key } = event;
@@ -51,13 +57,21 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
       const space = ' ';
 
       if (key !== underscore && key !== space) {
-        setException((prevException) => prevException.replace(key, underscore));
+        setException((prevException) => {
+          if (currentIndex < prevException.length && prevException[currentIndex] === key) {
+            const updatedException = prevException.split('');
+            updatedException[currentIndex] = underscore;
+            setCurrentIndex((prevIndex) => prevIndex + 1);
+            return updatedException.join('');
+          }
+          return prevException;
+        });
       }
     };
 
     window.addEventListener('keydown', keyDownHandler, false);
     return () => window.removeEventListener('keydown', keyDownHandler, false);
-  }, []);
+  }, [currentIndex]);
 
   useEffect(() => {
     const timer = counter > 0 ? setTimeout(() => setCounter(counter - 1), 1000) : null;
@@ -91,6 +105,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
       const newQuote = generateQuote();
       setException(newQuote);
       setCounter(Math.floor(returnQuoteLetters(newQuote).length / 2));
+      setCurrentIndex(0);
     }
   }, [start]);
 
@@ -105,6 +120,8 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
         exception,
         counter,
         quoteLetters,
+        currentIndex,
+        setCurrentIndex,
         setException,
       }}
     >

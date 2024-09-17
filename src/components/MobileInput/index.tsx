@@ -6,7 +6,7 @@ interface MobileInputProps {
 }
 
 const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
-  const { start, setException, exception } = useGame();
+  const { start, setException, exception, currentIndex, setCurrentIndex } = useGame();
 
   useEffect(() => {
     const isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
@@ -19,10 +19,12 @@ const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
     const underscore = '_';
-    const space = ' ';
 
-    if (inputText !== underscore && inputText !== space) {
-      setException(exception.replace(inputText, underscore));
+    if (inputText !== '' && currentIndex < exception.length && exception[currentIndex] === inputText) {
+      let updatedException = exception.split('');
+      updatedException[currentIndex] = underscore;
+      setException(updatedException.join(''));
+      setCurrentIndex(currentIndex + 1);
     }
 
     if (inputRef.current) {
