@@ -11,7 +11,7 @@ interface GameContextProps {
   exception: string;
   counter: number;
   quoteLetters: string;
-  setException: (exception: string) => void;
+  setException: (exception: string | ((prev: string) => string)) => void;
 }
 
 const defaultGameContext: GameContextProps = {
@@ -40,7 +40,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
     return savedVictory ? Number(savedVictory) : 0;
   });
 
-  const [exception, setException] = useState(generateQuote);
+  const [exception, setException] = useState<string>(generateQuote);
   const quoteLetters = returnQuoteLetters(exception);
   const [counter, setCounter] = useState(Math.floor(quoteLetters.length / 2));
 
@@ -50,9 +50,21 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
       const underscore = '_';
       const space = ' ';
 
-      if (key !== underscore && key !== space) {
-        setException((prevException) => prevException.replace(key, underscore));
-      }
+      setException((prevException) => {
+        const firstMatchingIndex = prevException.split('').findIndex(
+          (char) => char !== underscore && char !== space
+        );
+
+        if (firstMatchingIndex !== -1 && key === prevException[firstMatchingIndex]) {
+          const newException =
+            prevException.substring(0, firstMatchingIndex) +
+            underscore +
+            prevException.substring(firstMatchingIndex + 1);
+          return newException;
+        }
+
+        return prevException;
+      });
     };
 
     window.addEventListener('keydown', keyDownHandler, false);

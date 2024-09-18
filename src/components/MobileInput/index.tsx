@@ -21,12 +21,28 @@ const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
     const underscore = '_';
     const space = ' ';
 
-    if (inputText !== underscore && inputText !== space) {
-      setException(exception.replace(inputText, underscore));
-    }
+    if (inputText) {
+      const inputChar = inputText[inputText.length - 1];
 
-    if (inputRef.current) {
-      inputRef.current.value = '';
+      setException((prevException: string) => {
+        const firstMatchingIndex = prevException.split('').findIndex(
+          (char: string) => char !== underscore && char !== space
+        );
+
+        if (firstMatchingIndex !== -1 && inputChar === prevException[firstMatchingIndex]) {
+          const newException =
+            prevException.substring(0, firstMatchingIndex) +
+            underscore +
+            prevException.substring(firstMatchingIndex + 1);
+          return newException;
+        }
+
+        return prevException;
+      });
+
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
     }
   };
 
