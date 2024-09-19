@@ -12,7 +12,7 @@ const MobileInput: FC<MobileInputProps> = ({ inputRef }) => {
     const isMobileDevice = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
 
     if (isMobileDevice && start && inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus({ preventScroll: true });
     }
   }, [start]);
 
