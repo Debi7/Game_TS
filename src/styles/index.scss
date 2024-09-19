@@ -56,6 +56,7 @@ h1 {
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 600px;
+  transition: top 0.3s ease-in-out;
 }
 
 .wrapper {
@@ -169,18 +170,6 @@ button {
     top: 30%;
   }
 }
-
-// @media (max-width: 768px) {
-//   .section-quote {
-//     top: 25%;
-//   }
-// }
-
-// @media (max-width: 425px) {
-//   .section-quote {
-//     top: 23%;
-//   }
-// }
 
 
 @media (min-width: 1024px) {
